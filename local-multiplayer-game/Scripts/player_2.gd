@@ -284,8 +284,10 @@ func _physics_process(delta):
 				
 	if velocity.x > 0:
 		wasMovingR = true
+		PlayerSprite.flip_h = true
 	elif velocity.x < 0:
 		wasMovingR = false
+		PlayerSprite.flip_h = false
 		
 	if rightTap:
 		wasPressingR = true

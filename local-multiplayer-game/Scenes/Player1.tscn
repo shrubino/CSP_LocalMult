@@ -1,13 +1,35 @@
-[gd_scene load_steps=10 format=3 uid="uid://bro3dprem6cm0"]
+[gd_scene load_steps=13 format=3 uid="uid://bro3dprem6cm0"]
 
 [ext_resource type="Script" uid="uid://c635wbouiynsg" path="res://Scripts/player_1.gd" id="1_n5fpy"]
-[ext_resource type="Texture2D" uid="uid://vtj3o84hpue7" path="res://Resources/Prototype/monochrome_tilemap_transparent.png" id="1_nlwqd"]
+[ext_resource type="Texture2D" uid="uid://cwra40fds0cwo" path="res://Resources/spritesheet.png" id="2_n5fpy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5fpy"]
 size = Vector2(8, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n5fpy"]
 radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvont"]
+atlas = ExtResource("2_n5fpy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yta1"]
+atlas = ExtResource("2_n5fpy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ale3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvont")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yta1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_dvont"]
 length = 0.001
@@ -22,6 +44,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2ale3"]
+resource_name = "TongueFireLeft"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tongue:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-60, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_n5fpy"]
@@ -52,21 +89,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -60), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2ale3"]
-resource_name = "TongueFireLeft"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tongue:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-60, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dvont"]
@@ -113,10 +135,10 @@ offset_bottom = 5.0
 color = Color(0.7490196, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_nlwqd")
-region_enabled = true
-region_rect = Rect2(1.98325, 209, 12.241, 10.9918)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2ale3")
+autoplay = "default"
+frame_progress = 0.3359993
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -124,4 +146,3 @@ libraries = {
 }
 
 [connection signal="body_entered" from="Tongue" to="." method="_on_tongue_body_entered"]
-
