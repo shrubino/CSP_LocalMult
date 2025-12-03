@@ -88,16 +88,11 @@ extends CharacterBody2D
 ##Animations must be named "slide" all lowercase as the check box says
 @export var slide: bool
 ##Animations must be named "latch" all lowercase as the check box says
-@export var latch: bool
-##Animations must be named "falling" all lowercase as the check box says
 @export var falling: bool
-##Animations must be named "crouch_idle" all lowercase as the check box says
-@export var crouch_idle: bool
-##Animations must be named "crouch_walk" all lowercase as the check box says
-@export var crouch_walk: bool
-##Animations must be named "roll" all lowercase as the check box says
-@export var roll: bool
 
+@export_category("Tongue Controls")
+##Drop in an instance of the tongue, right now let's say it's a circular area2d 
+@export var tongue : Area2D
 
 #Variables determined by the developer set ones.
 var appliedGravity: float
@@ -126,9 +121,6 @@ var dset = false
 var colliderScaleLockY
 var colliderPosLockY
 
-var latched
-var wasLatched
-var crouching
 var groundPounding
 
 var anim
@@ -146,12 +138,7 @@ var rightTap
 var rightRelease
 var jumpTap
 var jumpRelease
-var runHold
-var latchHold
-var dashTap
-var rollTap
 var downTap
-var twirlTap
 
 func _ready():
 	wasMovingR = true
@@ -328,9 +315,7 @@ func _physics_process(delta):
 			elif jumpBuffering == 0 and coyoteTime == 0 and is_on_floor():
 				_jump()
 		elif jumpTap and is_on_wall() and !is_on_floor():
-			if wallJump and !latched:
-				_wallJump()
-			elif wallJump and latched:
+			if wallJump :
 				_wallJump()
 		elif jumpTap and is_on_floor():
 			_jump()
