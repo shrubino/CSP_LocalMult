@@ -12,6 +12,9 @@ extends CharacterBody2D
 @onready var PlayerSprite := $Sprite2D
 @onready var PlayerCollider := $CollisionShape2D
 
+#INFO OVERALL ENABLED/DISABLED
+@onready var can_input := true
+
 #INFO HORIZONTAL MOVEMENT 
 @export_category("L/R Movement")
 ##The max speed your player will move
@@ -93,6 +96,11 @@ extends CharacterBody2D
 @export_category("Tongue Controls")
 ##Drop in an instance of the tongue, right now let's say it's a circular area2d 
 @export var tongue : Area2D
+##Speed at which tongue is fired
+@export var tongueSpeed := 100
+##Max distance tongue travels before it returns to player
+@export var tongueRange := 110
+##We'll probably need a cooldown timer but let's wait and see
 
 #Variables determined by the developer set ones.
 var appliedGravity: float
@@ -123,6 +131,8 @@ var colliderPosLockY
 
 var groundPounding
 
+var tongueFiring
+
 var anim
 var col
 var animScaleLock : Vector2
@@ -139,6 +149,8 @@ var rightRelease
 var jumpTap
 var jumpRelease
 var downTap
+var tongueHold 
+var tongueTap
 
 func _ready():
 	wasMovingR = true
@@ -179,7 +191,7 @@ func _updateData():
 		
 	if jumps > 1:
 		jumpBuffering = 0
-		coyoteTime = 0
+		coyoteTime = 0 #I'm not entirely convinced this is the right way to handle this -- we may still want a little coyote time and jump buffer even with double jumps
 	
 	coyoteTime = abs(coyoteTime)
 	jumpBuffering = abs(jumpBuffering)
@@ -187,6 +199,8 @@ func _updateData():
 	if directionalSnap:
 		instantAccel = true
 		instantStop = true
+		
+	tongue.visible = false #start with no tongue ofc
 	
 	
 
@@ -216,7 +230,7 @@ func _physics_process(delta):
 	if !dset:
 		gdelta = delta
 		dset = true
-	#INFO Input Detectio. Define your inputs from the project settings here.
+	#INFO Input Detection. Define your inputs from the project settings here.
 	leftHold = Input.is_action_pressed("Left")
 	rightHold = Input.is_action_pressed("Right")
 	upHold = Input.is_action_pressed("Up")
@@ -225,9 +239,11 @@ func _physics_process(delta):
 	rightTap = Input.is_action_just_pressed("Right")
 	leftRelease = Input.is_action_just_released("Left")
 	rightRelease = Input.is_action_just_released("Right")
-	jumpTap = Input.is_action_just_pressed("Space")
-	jumpRelease = Input.is_action_just_released("Space")
+	jumpTap = Input.is_action_just_pressed("N")
+	jumpRelease = Input.is_action_just_released("N")
 	downTap = Input.is_action_just_pressed("Down")
+	tongueHold = Input.is_action_pressed("M")
+	tongueTap = Input.is_action_just_pressed("M")
 	
 	
 	#INFO Left and Right Movement
@@ -361,6 +377,16 @@ func _physics_process(delta):
 	if upToCancel and upHold and groundPound:
 		_endGroundPound()
 	
+	#INFO Tongue firing
+	if tongueTap: #this is probably gonna need a lot more logic to it
+		tongueFiring = true
+		if upHold:
+			_fire_tongue(Vector2(0,-1))
+		elif wasMovingR:
+			_fire_tongue(Vector2(1,0))
+		else:
+			_fire_tongue(Vector2(-1,0))
+	
 func _bufferJump():
 	await get_tree().create_timer(jumpBuffering).timeout
 	jumpWasPressed = false
@@ -421,3 +447,22 @@ func _endGroundPound():
 	groundPounding = false
 	appliedTerminalVelocity = terminalVelocity
 	gravityActive = true
+
+func _fire_tongue(direction):
+	tongue.visible = true
+	print(direction)
+	if direction == Vector2(1,0):
+		$AnimationPlayer.play("TongueFireRight")
+	if direction == Vector2(0, -1):
+		$AnimationPlayer.play("TongueFireUp")
+	if direction == Vector2(-1,0):
+		$AnimationPlayer.play("TongueFireLeft")
+	await get_tree().create_timer(0.6).timeout
+	tongue.visible = false
+	tongueFiring = false
+
+
+
+func _on_tongue_body_entered(body: Node2D) -> void:
+	if tongueFiring:
+		pass
