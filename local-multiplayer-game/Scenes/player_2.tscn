@@ -122,3 +122,4 @@ region_rect = Rect2(1.98325, 209, 12.241, 10.9918)
 libraries = {
 &"": SubResource("AnimationLibrary_dvont")
 }
+

@@ -124,3 +124,4 @@ libraries = {
 }
 
 [connection signal="body_entered" from="Tongue" to="." method="_on_tongue_body_entered"]
+
