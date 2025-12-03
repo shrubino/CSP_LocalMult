@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bro3dprem6cm0"]
+[gd_scene load_steps=10 format=3 uid="uid://bro3dprem6cm0"]
 
 [ext_resource type="Script" uid="uid://c635wbouiynsg" path="res://Scripts/player_1.gd" id="1_n5fpy"]
 [ext_resource type="Texture2D" uid="uid://vtj3o84hpue7" path="res://Resources/Prototype/monochrome_tilemap_transparent.png" id="1_nlwqd"]
@@ -6,16 +6,83 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5fpy"]
 size = Vector2(8, 10)
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5fpy"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_dvont"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tongue:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n5fpy"]
+resource_name = "TongueFireRight"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tongue:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6022733),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(60, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1yta1"]
+resource_name = "TongueFireUp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tongue:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -60), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2ale3"]
+resource_name = "TongueFireLeft"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tongue:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-60, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvont"]
+_data = {
+&"RESET": SubResource("Animation_dvont"),
+&"TongueFireLeft": SubResource("Animation_2ale3"),
+&"TongueFireRight": SubResource("Animation_n5fpy"),
+&"TongueFireUp": SubResource("Animation_1yta1")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue")]
 script = ExtResource("1_n5fpy")
 leftRaycast = NodePath("LeftCast")
 middleRaycast = NodePath("MiddleCast")
 rightRaycast = NodePath("RightCast")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_nlwqd")
-region_enabled = true
-region_rect = Rect2(1.98325, 209, 12.241, 10.9918)
+tongue = NodePath("Tongue")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_n5fpy")
@@ -32,3 +99,28 @@ position = Vector2(4, 0)
 target_position = Vector2(0, -10)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Tongue" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tongue"]
+shape = SubResource("CircleShape2D_n5fpy")
+
+[node name="ColorRect" type="ColorRect" parent="Tongue"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(0.7490196, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nlwqd")
+region_enabled = true
+region_rect = Rect2(1.98325, 209, 12.241, 10.9918)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dvont")
+}
+
+[connection signal="body_entered" from="Tongue" to="." method="_on_tongue_body_entered"]

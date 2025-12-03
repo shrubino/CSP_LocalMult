@@ -98,6 +98,15 @@ extends CharacterBody2D
 ##Animations must be named "roll" all lowercase as the check box says
 @export var roll: bool
 
+@export_category("Tongue Controls")
+##Drop in an instance of the tongue, right now let's say it's a circular area2d 
+@export var tongue : Area2D
+##Speed at which tongue is fired
+@export var tongueSpeed := 100
+##Max distance tongue travels before it returns to player
+@export var tongueRange := 110
+##We'll probably need a cooldown timer but let's wait and see
+
 
 #Variables determined by the developer set ones.
 var appliedGravity: float
@@ -131,6 +140,8 @@ var wasLatched
 var crouching
 var groundPounding
 
+var tongueFiring
+
 var anim
 var col
 var animScaleLock : Vector2
@@ -146,12 +157,9 @@ var rightTap
 var rightRelease
 var jumpTap
 var jumpRelease
-var runHold
-var latchHold
-var dashTap
-var rollTap
 var downTap
-var twirlTap
+var tongueHold 
+var tongueTap
 
 func _ready():
 	wasMovingR = true
@@ -201,7 +209,8 @@ func _updateData():
 		instantAccel = true
 		instantStop = true
 	
-	
+	tongue.visible = false #start with no tongue ofc
+
 
 func _process(_delta):
 	#INFO animations
@@ -241,7 +250,9 @@ func _physics_process(delta):
 	jumpTap = Input.is_action_just_pressed("C")
 	jumpRelease = Input.is_action_just_released("C")
 	downTap = Input.is_action_just_pressed("S")
-	
+	tongueHold = Input.is_action_pressed("V")
+	tongueTap = Input.is_action_just_pressed("V")
+
 	
 	#INFO Left and Right Movement
 	
@@ -375,7 +386,16 @@ func _physics_process(delta):
 	
 	if upToCancel and upHold and groundPound:
 		_endGroundPound()
-	
+	#INFO Tongue firing
+	if tongueTap: #this is probably gonna need a lot more logic to it
+		tongueFiring = true
+		if upHold:
+			_fire_tongue(Vector2(0,-1))
+		elif wasMovingR:
+			_fire_tongue(Vector2(1,0))
+		else:
+			_fire_tongue(Vector2(-1,0))
+
 func _bufferJump():
 	await get_tree().create_timer(jumpBuffering).timeout
 	jumpWasPressed = false
@@ -436,3 +456,22 @@ func _endGroundPound():
 	groundPounding = false
 	appliedTerminalVelocity = terminalVelocity
 	gravityActive = true
+
+func _fire_tongue(direction):
+	tongue.visible = true
+	print(direction)
+	if direction == Vector2(1,0):
+		$AnimationPlayer.play("TongueFireRight")
+	if direction == Vector2(0, -1):
+		$AnimationPlayer.play("TongueFireUp")
+	if direction == Vector2(-1,0):
+		$AnimationPlayer.play("TongueFireLeft")
+	await get_tree().create_timer(0.6).timeout
+	tongue.visible = false
+	tongueFiring = false
+
+
+
+func _on_tongue_body_entered(body: Node2D) -> void:
+	if tongueFiring:
+		pass
