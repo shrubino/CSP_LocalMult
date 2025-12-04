@@ -99,12 +99,43 @@ _data = {
 &"TongueFireUp": SubResource("Animation_1yta1")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue")]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue") groups=["Player1"]]
 script = ExtResource("1_n5fpy")
+README = null
+maxSpeed = null
+timeToReachMaxSpeed = null
+timeToReachZeroSpeed = null
+directionalSnap = null
+jumpHeight = null
+jumps = null
+gravityScale = null
+terminalVelocity = null
+descendingGravityFactor = null
+shortHopAkaVariableJumpHeight = null
+jumpVariable = null
+coyoteTime = null
+jumpBuffering = null
+wallJump = null
+inputPauseAfterWallJump = null
+wallKickAngle = null
+wallSliding = null
+cornerCutting = null
+correctionAmount = null
 leftRaycast = NodePath("LeftCast")
 middleRaycast = NodePath("MiddleCast")
 rightRaycast = NodePath("RightCast")
+groundPound = null
+groundPoundPause = null
+upToCancel = null
+run = null
+jump = null
+idle = null
+walk = null
+slide = null
+falling = null
 tongue = NodePath("Tongue")
+tongueSpeed = null
+tongueRange = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_n5fpy")
@@ -138,7 +169,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ale3")
 autoplay = "default"
-frame_progress = 0.3359993
+frame_progress = 0.47345126
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

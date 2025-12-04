@@ -99,7 +99,7 @@ _data = {
 &"TongueFireUp": SubResource("Animation_1yta1")
 }
 
-[node name="Player2" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue")]
+[node name="Player2" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue") groups=["Player2"]]
 script = ExtResource("1_cgts5")
 leftRaycast = NodePath("LeftCast")
 middleRaycast = NodePath("MiddleCast")
@@ -138,7 +138,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eus2p")
 autoplay = "default"
-frame_progress = 0.7973489
+frame_progress = 0.78900623
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -101,6 +101,7 @@ extends CharacterBody2D
 ##Max distance tongue travels before it returns to player
 @export var tongueRange := 110
 ##We'll probably need a cooldown timer but let's wait and see
+@export var tongueResetTimer := 1.0
 
 #Variables determined by the developer set ones.
 var appliedGravity: float
@@ -452,7 +453,6 @@ func _endGroundPound():
 
 func _fire_tongue(direction):
 	tongue.visible = true
-	print(direction)
 	if direction == Vector2(1,0):
 		$AnimationPlayer.play("TongueFireRight")
 	if direction == Vector2(0, -1):
@@ -467,4 +467,5 @@ func _fire_tongue(direction):
 
 func _on_tongue_body_entered(body: Node2D) -> void:
 	if tongueFiring:
-		pass
+		if body.is_in_group("Player2"):
+			pass

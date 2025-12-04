@@ -105,7 +105,8 @@ extends CharacterBody2D
 @export var tongueSpeed := 100
 ##Max distance tongue travels before it returns to player
 @export var tongueRange := 110
-##We'll probably need a cooldown timer but let's wait and see
+##Reset timer for when the tongue sticks to something
+@export var tongueResetTimer := 1.0
 
 
 #Variables determined by the developer set ones.
