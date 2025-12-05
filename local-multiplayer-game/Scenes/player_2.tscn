@@ -100,6 +100,7 @@ _data = {
 }
 
 [node name="Player2" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue") groups=["Player2"]]
+collision_layer = 2
 script = ExtResource("1_cgts5")
 leftRaycast = NodePath("LeftCast")
 middleRaycast = NodePath("MiddleCast")
