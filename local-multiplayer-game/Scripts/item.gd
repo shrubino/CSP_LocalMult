@@ -9,19 +9,18 @@ enum ItemType {
 @export var jumpMultiplier = 1.5
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
-		var player := body as Player
+	if body is Player1 or body is Player2:
 		
 		match itemType:
 			#Super Jump function, 1.5 * jump height
 			ItemType.SuperJump:
-				player.jumpHeight *= jumpMultiplier
-				player._updateData()
+				body.jumpHeight *= jumpMultiplier
+				body._updateData()
 			
 			#Double Jump function(Jump not working yet)
 			ItemType.DoubleJump:
-				player.jumps +=1
-				player._updateData()
+				body.jumps +=1
+				body._updateData()
 	
 	print("Item Collected: " , itemType)
 	
