@@ -24,6 +24,8 @@ render_target_update_mode = 4
 
 [node name="LeftCamera2D" type="Camera2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
 unique_name_in_owner = true
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="Level1" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" instance=ExtResource("2_8gbba")]
 unique_name_in_owner = true
@@ -42,3 +44,10 @@ render_target_update_mode = 4
 
 [node name="RightCamera2D" type="Camera2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
 unique_name_in_owner = true
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 160.0
+offset_right = 164.0
+offset_bottom = 180.0
