@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bro3dprem6cm0"]
+[gd_scene load_steps=33 format=3 uid="uid://bro3dprem6cm0"]
 
 [ext_resource type="Script" uid="uid://c635wbouiynsg" path="res://Scripts/player_1.gd" id="1_n5fpy"]
-[ext_resource type="Texture2D" uid="uid://cwra40fds0cwo" path="res://Resources/spritesheet.png" id="2_n5fpy"]
+[ext_resource type="Texture2D" uid="uid://bmwbp3topkeut" path="res://Resources/Frog/Blue/IdleBlueSheet.png" id="2_n5fpy"]
+[ext_resource type="Texture2D" uid="uid://wmgsef8oktq1" path="res://Resources/Frog/Jumps/BlueJump_New.png" id="3_1yta1"]
+[ext_resource type="Texture2D" uid="uid://btc00p81ujp6t" path="res://Resources/Frog/Blue/BlueRunSpriteSheet.png" id="3_dvont"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5fpy"]
 size = Vector2(8, 10)
@@ -11,11 +13,83 @@ radius = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvont"]
 atlas = ExtResource("2_n5fpy")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1yta1"]
 atlas = ExtResource("2_n5fpy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ale3"]
+atlas = ExtResource("2_n5fpy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i047d"]
+atlas = ExtResource("2_n5fpy")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjvw7"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tchc4"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_823bh"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj2r8"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dttv8"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhj1v"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n7oi"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lg15"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a7kb"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0l6a"]
+atlas = ExtResource("3_dvont")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv6sk"]
+atlas = ExtResource("3_dvont")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgfcu"]
+atlas = ExtResource("3_dvont")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qf5g"]
+atlas = ExtResource("3_dvont")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3odvt"]
+atlas = ExtResource("3_dvont")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bida0"]
+atlas = ExtResource("3_dvont")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bihrp"]
+atlas = ExtResource("3_dvont")
+region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ale3"]
 animations = [{
@@ -25,10 +99,77 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1yta1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ale3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i047d")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjvw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tchc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_823bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_823bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj2r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dttv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhj1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n7oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lg15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a7kb")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0l6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv6sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgfcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qf5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3odvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bida0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bihrp")
+}],
+"loop": true,
+"name": &"run",
+"speed": 9.0
 }]
 
 [sub_resource type="Animation" id="Animation_dvont"]
@@ -99,40 +240,15 @@ _data = {
 &"TongueFireUp": SubResource("Animation_1yta1")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue") groups=["Player1"]]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue") groups=["Player"]]
+collision_layer = 2
 script = ExtResource("1_n5fpy")
-README = null
-maxSpeed = null
-timeToReachMaxSpeed = null
-timeToReachZeroSpeed = null
-directionalSnap = null
-jumpHeight = null
-jumps = null
-gravityScale = null
-terminalVelocity = null
-descendingGravityFactor = null
-shortHopAkaVariableJumpHeight = null
-jumpVariable = null
-coyoteTime = null
-jumpBuffering = null
-wallJump = null
-inputPauseAfterWallJump = null
-wallKickAngle = null
-wallSliding = null
-cornerCutting = null
-correctionAmount = null
 leftRaycast = NodePath("LeftCast")
 middleRaycast = NodePath("MiddleCast")
 rightRaycast = NodePath("RightCast")
-groundPound = null
-groundPoundPause = null
-upToCancel = null
-run = null
-jump = null
-idle = null
-walk = null
-slide = null
-falling = null
+run = true
+jump = true
+idle = true
 tongue = NodePath("Tongue")
 tongueSpeed = null
 tongueRange = null
@@ -171,8 +287,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ale3")
-autoplay = "default"
-frame_progress = 0.6802706
+animation = &"jump"
+autoplay = "idle"
+frame = 4
+frame_progress = 0.391845
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

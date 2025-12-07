@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Player1 #Detecting player class in item script
 
 @export var README: String = "This is code Stephen stole from https://github.com/Noah-Erz/Ultimate-Platformer-Controller-2D -- it has been HEAVILY modified to delete dashing, rolling, crouching, and wall latching. Use at your own risk, myself included."
 #INFO READEME 
