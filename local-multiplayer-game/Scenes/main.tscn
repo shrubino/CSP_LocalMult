@@ -42,3 +42,5 @@ render_target_update_mode = 4
 
 [node name="RightCamera2D" type="Camera2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
 unique_name_in_owner = true
+
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1"]

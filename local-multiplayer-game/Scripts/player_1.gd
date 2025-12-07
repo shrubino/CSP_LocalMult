@@ -15,6 +15,9 @@ extends CharacterBody2D
 #INFO OVERALL ENABLED/DISABLED
 @onready var can_input := true
 
+#INFO GET REFERN
+@onready var otherPlayer = get_tree().get_first_node_in_group("Player2")
+
 #INFO HORIZONTAL MOVEMENT 
 @export_category("L/R Movement")
 ##The max speed your player will move
@@ -97,11 +100,17 @@ extends CharacterBody2D
 ##Drop in an instance of the tongue, right now let's say it's a circular area2d 
 @export var tongue : Area2D
 ##Speed at which tongue is fired
-@export var tongueSpeed := 100
+@export var tongueSpeed := 100 #CURRENTLY DOES NOTHING
 ##Max distance tongue travels before it returns to player
-@export var tongueRange := 110
-##We'll probably need a cooldown timer but let's wait and see
+@export var tongueRange := 110 #this currently DOES NOTHING
+##Reset timer for when the tongue sticks to something
 @export var tongueResetTimer := 1.0
+#Stops from re-sticking to the same thing twice or twice in one shot
+@export var canStick := true
+##Timer for stun length
+@export var tongueStunTime := 2.0
+
+@onready var isStunned := false
 
 #Variables determined by the developer set ones.
 var appliedGravity: float
@@ -232,19 +241,20 @@ func _physics_process(delta):
 		gdelta = delta
 		dset = true
 	#INFO Input Detection. Define your inputs from the project settings here.
-	leftHold = Input.is_action_pressed("Left")
-	rightHold = Input.is_action_pressed("Right")
-	upHold = Input.is_action_pressed("Up")
-	downHold = Input.is_action_pressed("Down")
-	leftTap = Input.is_action_just_pressed("Left")
-	rightTap = Input.is_action_just_pressed("Right")
-	leftRelease = Input.is_action_just_released("Left")
-	rightRelease = Input.is_action_just_released("Right")
-	jumpTap = Input.is_action_just_pressed("N")
-	jumpRelease = Input.is_action_just_released("N")
-	downTap = Input.is_action_just_pressed("Down")
-	tongueHold = Input.is_action_pressed("M")
-	tongueTap = Input.is_action_just_pressed("M")
+	if !isStunned:
+		leftHold = Input.is_action_pressed("A")
+		rightHold = Input.is_action_pressed("D")
+		upHold = Input.is_action_pressed("W")
+		downHold = Input.is_action_pressed("S")
+		leftTap = Input.is_action_just_pressed("A")
+		rightTap = Input.is_action_just_pressed("D")
+		leftRelease = Input.is_action_just_released("A")
+		rightRelease = Input.is_action_just_released("D")
+		jumpTap = Input.is_action_just_pressed("C")
+		jumpRelease = Input.is_action_just_released("C")
+		downTap = Input.is_action_just_pressed("S")
+		tongueHold = Input.is_action_pressed("V")
+		tongueTap = Input.is_action_just_pressed("V")
 	
 	
 	#INFO Left and Right Movement
@@ -464,8 +474,29 @@ func _fire_tongue(direction):
 	tongueFiring = false
 
 
-
+#this just checks whether the tongue has hit something
 func _on_tongue_body_entered(body: Node2D) -> void:
 	if tongueFiring:
-		if body.is_in_group("Player2"):
-			pass
+		if body == otherPlayer and canStick:
+			canStick = false
+			body._getStunned(tongueStunTime) #stuns the other player for 2 seconds -- this should become a variable so we can edit it
+			await get_tree().create_timer(tongueResetTimer).timeout
+			canStick = true
+		elif canStick:
+			canStick = false
+			pullToObject(body)
+			await get_tree().create_timer(tongueResetTimer).timeout
+			canStick = true
+
+func _getStunned(time):
+	isStunned = true
+	await get_tree().create_timer(time).timeout
+	isStunned = false
+
+func pullToObject(body):
+	print(body.global_position)
+	print(position)
+	var pullVector = body.global_position - position
+	velocity += pullVector.normalized() * 500
+	#velocity.y -= 800
+	jumpCount += 1
