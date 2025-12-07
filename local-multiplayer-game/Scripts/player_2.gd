@@ -12,6 +12,12 @@ extends CharacterBody2D
 @onready var PlayerSprite := $Sprite2D
 @onready var PlayerCollider := $CollisionShape2D
 
+#INFO OVERALL ENABLED/DISABLED
+@onready var can_input := true
+
+#INFO GET REFERN
+@onready var otherPlayer = get_tree().get_first_node_in_group("Player1")
+
 #INFO HORIZONTAL MOVEMENT 
 @export_category("L/R Movement")
 ##The max speed your player will move
@@ -88,26 +94,24 @@ extends CharacterBody2D
 ##Animations must be named "slide" all lowercase as the check box says
 @export var slide: bool
 ##Animations must be named "latch" all lowercase as the check box says
-@export var latch: bool
-##Animations must be named "falling" all lowercase as the check box says
 @export var falling: bool
-##Animations must be named "crouch_idle" all lowercase as the check box says
-@export var crouch_idle: bool
-##Animations must be named "crouch_walk" all lowercase as the check box says
-@export var crouch_walk: bool
-##Animations must be named "roll" all lowercase as the check box says
-@export var roll: bool
 
 @export_category("Tongue Controls")
 ##Drop in an instance of the tongue, right now let's say it's a circular area2d 
 @export var tongue : Area2D
 ##Speed at which tongue is fired
-@export var tongueSpeed := 100
+@export var tongueSpeed := 100 #CURRENTLY DOES NOTHING
 ##Max distance tongue travels before it returns to player
-@export var tongueRange := 110
+@export var tongueRange := 110 #this currently DOES NOTHING
 ##Reset timer for when the tongue sticks to something
 @export var tongueResetTimer := 1.0
+##Stops from re-sticking to the same thing twice or twice in one shot
+@export var canStick := true
+##Timer for stun length
+@export var tongueStunTime := 2.0
 
+
+@onready var isStunned := false
 
 #Variables determined by the developer set ones.
 var appliedGravity: float
@@ -136,9 +140,6 @@ var dset = false
 var colliderScaleLockY
 var colliderPosLockY
 
-var latched
-var wasLatched
-var crouching
 var groundPounding
 
 var tongueFiring
@@ -201,7 +202,7 @@ func _updateData():
 		
 	if jumps > 1:
 		jumpBuffering = 0
-		coyoteTime = 0
+		coyoteTime = 0 #I'm not entirely convinced this is the right way to handle this -- we may still want a little coyote time and jump buffer even with double jumps
 	
 	coyoteTime = abs(coyoteTime)
 	jumpBuffering = abs(jumpBuffering)
@@ -209,9 +210,10 @@ func _updateData():
 	if directionalSnap:
 		instantAccel = true
 		instantStop = true
-	
+		
 	tongue.visible = false #start with no tongue ofc
-
+	
+	
 
 func _process(_delta):
 	#INFO animations
@@ -239,21 +241,22 @@ func _physics_process(delta):
 	if !dset:
 		gdelta = delta
 		dset = true
-	#INFO Input Detectio. Define your inputs from the project settings here.
-	leftHold = Input.is_action_pressed("A")
-	rightHold = Input.is_action_pressed("D")
-	upHold = Input.is_action_pressed("W")
-	downHold = Input.is_action_pressed("S")
-	leftTap = Input.is_action_just_pressed("A")
-	rightTap = Input.is_action_just_pressed("D")
-	leftRelease = Input.is_action_just_released("A")
-	rightRelease = Input.is_action_just_released("D")
-	jumpTap = Input.is_action_just_pressed("C")
-	jumpRelease = Input.is_action_just_released("C")
-	downTap = Input.is_action_just_pressed("S")
-	tongueHold = Input.is_action_pressed("V")
-	tongueTap = Input.is_action_just_pressed("V")
-
+	#INFO Input Detection. Define your inputs from the project settings here.
+	if !isStunned:
+		leftHold = Input.is_action_pressed("Left")
+		rightHold = Input.is_action_pressed("Right")
+		upHold = Input.is_action_pressed("Up")
+		downHold = Input.is_action_pressed("Down")
+		leftTap = Input.is_action_just_pressed("Left")
+		rightTap = Input.is_action_just_pressed("Right")
+		leftRelease = Input.is_action_just_released("Left")
+		rightRelease = Input.is_action_just_released("Right")
+		jumpTap = Input.is_action_just_pressed("N")
+		jumpRelease = Input.is_action_just_released("N")
+		downTap = Input.is_action_just_pressed("Down")
+		tongueHold = Input.is_action_pressed("M")
+		tongueTap = Input.is_action_just_pressed("M")
+	
 	
 	#INFO Left and Right Movement
 	
@@ -342,9 +345,7 @@ func _physics_process(delta):
 			elif jumpBuffering == 0 and coyoteTime == 0 and is_on_floor():
 				_jump()
 		elif jumpTap and is_on_wall() and !is_on_floor():
-			if wallJump and !latched:
-				_wallJump()
-			elif wallJump and latched:
+			if wallJump :
 				_wallJump()
 		elif jumpTap and is_on_floor():
 			_jump()
@@ -389,6 +390,7 @@ func _physics_process(delta):
 	
 	if upToCancel and upHold and groundPound:
 		_endGroundPound()
+	
 	#INFO Tongue firing
 	if tongueTap: #this is probably gonna need a lot more logic to it
 		tongueFiring = true
@@ -398,7 +400,7 @@ func _physics_process(delta):
 			_fire_tongue(Vector2(1,0))
 		else:
 			_fire_tongue(Vector2(-1,0))
-
+	
 func _bufferJump():
 	await get_tree().create_timer(jumpBuffering).timeout
 	jumpWasPressed = false
@@ -462,7 +464,6 @@ func _endGroundPound():
 
 func _fire_tongue(direction):
 	tongue.visible = true
-	print(direction)
 	if direction == Vector2(1,0):
 		$AnimationPlayer.play("TongueFireRight")
 	if direction == Vector2(0, -1):
@@ -473,8 +474,29 @@ func _fire_tongue(direction):
 	tongue.visible = false
 	tongueFiring = false
 
-
-
+#this just checks whether the tongue has hit something
 func _on_tongue_body_entered(body: Node2D) -> void:
 	if tongueFiring:
-		pass
+		if body == otherPlayer and canStick:
+			canStick = false
+			body._getStunned(tongueStunTime) #stuns the other player for 2 seconds -- this should become a variable so we can edit it
+			await get_tree().create_timer(tongueResetTimer).timeout
+			canStick = true
+		elif canStick:
+			canStick = false
+			pullToObject(body)
+			await get_tree().create_timer(tongueResetTimer).timeout
+			canStick = true
+
+func _getStunned(time):
+	isStunned = true
+	await get_tree().create_timer(time).timeout
+	isStunned = false
+
+func pullToObject(body):
+	print(body.global_position)
+	print(position)
+	var pullVector = body.global_position - position
+	velocity += pullVector.normalized() * 500
+	#velocity.y -= 800
+	jumpCount += 1

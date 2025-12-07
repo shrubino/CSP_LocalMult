@@ -136,6 +136,9 @@ falling = null
 tongue = NodePath("Tongue")
 tongueSpeed = null
 tongueRange = null
+tongueResetTimer = null
+canStick = null
+tongueStunTime = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_n5fpy")
@@ -169,7 +172,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ale3")
 autoplay = "default"
-frame_progress = 0.47345126
+frame_progress = 0.6802706
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
