@@ -32,13 +32,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kovm6"]
-size = Vector2(62, 4)
+size = Vector2(62, 11)
 
 [node name="DragonFly" type="AnimatableBody2D"]
+collision_layer = 15
+collision_mask = 15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ilge")
 animation = &"idle"
+autoplay = "idle"
 frame_progress = 0.15069632
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

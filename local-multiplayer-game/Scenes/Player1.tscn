@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bro3dprem6cm0"]
+[gd_scene load_steps=33 format=3 uid="uid://bro3dprem6cm0"]
 
 [ext_resource type="Script" uid="uid://c635wbouiynsg" path="res://Scripts/player_1.gd" id="1_n5fpy"]
 [ext_resource type="Texture2D" uid="uid://bmwbp3topkeut" path="res://Resources/Frog/Blue/IdleBlueSheet.png" id="2_n5fpy"]
+[ext_resource type="Texture2D" uid="uid://wmgsef8oktq1" path="res://Resources/Frog/Jumps/BlueJump_New.png" id="3_1yta1"]
 [ext_resource type="Texture2D" uid="uid://btc00p81ujp6t" path="res://Resources/Frog/Blue/BlueRunSpriteSheet.png" id="3_dvont"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5fpy"]
@@ -25,6 +26,42 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_i047d"]
 atlas = ExtResource("2_n5fpy")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjvw7"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tchc4"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_823bh"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj2r8"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dttv8"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhj1v"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n7oi"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lg15"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a7kb"]
+atlas = ExtResource("3_1yta1")
+region = Rect2(704, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0l6a"]
 atlas = ExtResource("3_dvont")
@@ -72,6 +109,41 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjvw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tchc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_823bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_823bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj2r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dttv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhj1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n7oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lg15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a7kb")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -175,6 +247,7 @@ leftRaycast = NodePath("LeftCast")
 middleRaycast = NodePath("MiddleCast")
 rightRaycast = NodePath("RightCast")
 run = true
+jump = true
 idle = true
 tongue = NodePath("Tongue")
 
@@ -209,8 +282,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ale3")
-animation = &"run"
+animation = &"jump"
 autoplay = "idle"
+frame = 4
+frame_progress = 0.391845
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
