@@ -36,6 +36,7 @@ texture = ExtResource("3_kry3j")
 [node name="LeftCamera2D" type="Camera2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
 unique_name_in_owner = true
 offset = Vector2(0, -40)
+zoom = Vector2(0.365, 0.365)
 limit_left = 0
 limit_right = 320
 limit_smoothed = true
