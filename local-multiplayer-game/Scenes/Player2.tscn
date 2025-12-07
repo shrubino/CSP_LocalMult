@@ -301,8 +301,6 @@ metadata/_edit_use_anchors_ = true
 sprite_frames = SubResource("SpriteFrames_eus2p")
 animation = &"jump"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.9433337
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
