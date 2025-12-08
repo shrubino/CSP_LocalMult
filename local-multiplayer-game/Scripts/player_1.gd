@@ -16,7 +16,7 @@ class_name Player1
 #INFO OVERALL ENABLED/DISABLED
 @onready var can_input := true
 
-#INFO GET REFERN
+#INFO GET REFERENCE TO OTHER PLAYER
 @onready var otherPlayer = get_tree().get_first_node_in_group("Player2")
 
 #INFO HORIZONTAL MOVEMENT 
@@ -92,10 +92,10 @@ class_name Player1
 @export var idle: bool
 ##Animations must be named "walk" all lowercase as the check box says
 @export var walk: bool
+##Animations must be named "slide" all lowercase as the check box says
+@export var slide: bool
 ##Animations must be named "latch" all lowercase as the check box says
 @export var falling: bool
-#Animation for sun on ground
-@export var stun : bool
 
 @export_category("Tongue Controls")
 ##Drop in an instance of the tongue, right now let's say it's a circular area2d 
@@ -106,10 +106,11 @@ class_name Player1
 @export var tongueRange := 110 #this currently DOES NOTHING
 ##Reset timer for when the tongue sticks to something
 @export var tongueResetTimer := 1.0
-#Stops from re-sticking to the same thing twice or twice in one shot
+##Stops from re-sticking to the same thing twice or twice in one shot
 @export var canStick := true
 ##Timer for stun length
 @export var tongueStunTime := 2.0
+
 
 @onready var isStunned := false
 
@@ -461,7 +462,7 @@ func _endGroundPound():
 	groundPounding = false
 	appliedTerminalVelocity = terminalVelocity
 	gravityActive = true
-	
+
 func _fire_tongue(direction):
 	tongueFiring = true
 	tongue.visible = true
@@ -470,7 +471,7 @@ func _fire_tongue(direction):
 	# newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)
 	
 	var tongue_direction = Vector2.RIGHT if $Sprite2D.flip_h else Vector2.LEFT
-	if Input.is_action_pressed("Up"):
+	if Input.is_action_pressed("W"):
 		tongue_direction = Vector2.UP
 	newTween.tween_property(tongue, "position", (tongue_direction * 80), 0.25)
 	newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)

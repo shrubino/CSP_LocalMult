@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cwra40fds0cwo" path="res://Resources/spritesheet.png" id="1_joc8x"]
 [ext_resource type="PackedScene" uid="uid://bro3dprem6cm0" path="res://Scenes/Player1.tscn" id="2_6l7je"]
-[ext_resource type="PackedScene" path="res://Scenes/player_2.tscn" id="3_jv6wh"]
 [ext_resource type="PackedScene" uid="uid://cf6nlic2jww2" path="res://Scenes/item.tscn" id="4_jghel"]
+[ext_resource type="PackedScene" uid="uid://dwacpckxvli0b" path="res://Scenes/Player2.tscn" id="4_ysn8j"]
 [ext_resource type="PackedScene" uid="uid://vmo7thkk6ugc" path="res://Scenes/mushroom.tscn" id="8_6ll4n"]
 [ext_resource type="Texture2D" uid="uid://ctc55x6e6ae34" path="res://Resources/Tiles/MUSHROOM PLATFORM.png" id="8_rpty4"]
 [ext_resource type="PackedScene" uid="uid://btwwcxhsmo6km" path="res://Scenes/dragon_fly.tscn" id="11_2h8qs"]
@@ -106,8 +106,7 @@ position = Vector2(97, 164)
 run = false
 idle = false
 
-[node name="Player2" parent="." groups=["Player"] instance=ExtResource("3_jv6wh")]
-position = Vector2(202, 164)
+[node name="Player2" parent="." instance=ExtResource("4_ysn8j")]
 
 [node name="Items" type="Node" parent="."]
 
@@ -250,7 +249,10 @@ position = Vector2(266, 118)
 position = Vector2(47, 128)
 
 [node name="Mushroom3" parent="." instance=ExtResource("8_6ll4n")]
-position = Vector2(143, 116)
+position = Vector2(267, 8)
+
+[node name="Sprite2D" parent="Mushroom3" index="0"]
+flip_h = true
 
 [node name="Mushroom4" parent="." instance=ExtResource("8_6ll4n")]
 position = Vector2(195, 64)
@@ -259,3 +261,5 @@ position = Vector2(195, 64)
 position = Vector2(85, 42)
 
 [connection signal="pressed" from="CanvasLayer/WinPanel/RestartButton" to="Player1" method="_on_restart_button_pressed"]
+
+[editable path="Mushroom3"]

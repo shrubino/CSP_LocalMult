@@ -4,12 +4,12 @@ extends Node
 	{
 		sub_viewport = %LeftSubViewport,
 		camera = %LeftCamera2D,
-		player = %Level1/Player1,
+		player = $HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Player1,
 	},
 	{
 		sub_viewport = %RightSubViewport,
 		camera = %RightCamera2D,
-		player = %Level1/Player2,
+		player = $HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Player2,
 	}
 ]
 	

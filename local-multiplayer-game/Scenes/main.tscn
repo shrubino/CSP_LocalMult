@@ -88,7 +88,6 @@ limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="Level1" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" instance=ExtResource("2_8gbba")]
-unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
 visible = false
@@ -173,3 +172,6 @@ offset_left = 160.0
 offset_right = 164.0
 offset_bottom = 180.0
 color = Color(0.050980393, 0.3764706, 0.07058824, 1)
+
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Mushroom3"]
