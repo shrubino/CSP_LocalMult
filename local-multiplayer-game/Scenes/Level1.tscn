@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://cwra40fds0cwo" path="res://Resources/spritesheet.png" id="1_joc8x"]
 [ext_resource type="PackedScene" uid="uid://bro3dprem6cm0" path="res://Scenes/Player1.tscn" id="2_6l7je"]
-[ext_resource type="PackedScene" path="res://Scenes/player_2.tscn" id="3_jv6wh"]
-[ext_resource type="PackedScene" path="res://Scenes/item.tscn" id="4_jghel"]
+[ext_resource type="PackedScene" uid="uid://djudxw4akuocg" path="res://Scenes/player_2.tscn" id="3_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://cf6nlic2jww2" path="res://Scenes/item.tscn" id="4_jghel"]
 [ext_resource type="Texture2D" uid="uid://ctc55x6e6ae34" path="res://Resources/Tiles/MUSHROOM PLATFORM.png" id="8_rpty4"]
-[ext_resource type="PackedScene" path="res://Scenes/dragon_fly.tscn" id="11_2h8qs"]
-[ext_resource type="PackedScene" path="res://Scenes/end.tscn" id="13_6jj8j"]
+[ext_resource type="PackedScene" uid="uid://btwwcxhsmo6km" path="res://Scenes/dragon_fly.tscn" id="11_2h8qs"]
+[ext_resource type="PackedScene" uid="uid://cwls1y4eehxsq" path="res://Scenes/end.tscn" id="13_6jj8j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jghel"]
 texture = ExtResource("1_joc8x")
@@ -104,11 +104,6 @@ tile_set = SubResource("TileSet_slnnj")
 position = Vector2(97, 164)
 run = false
 idle = false
-tongueSpeed = 100
-tongueRange = 110
-tongueResetTimer = 1.0
-canStick = true
-tongueStunTime = 2.0
 
 [node name="Player2" parent="." groups=["Player"] instance=ExtResource("3_jv6wh")]
 position = Vector2(202, 164)
@@ -229,6 +224,15 @@ position = Vector2(317, 317)
 rotation = -3.1415925
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundries/R_WorldBoundry"]
+position = Vector2(4, 162)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_ysn8j")
+
+[node name="D_WorldBoundry" type="StaticBody2D" parent="WorldBoundries"]
+position = Vector2(-4, 193)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundries/D_WorldBoundry"]
 position = Vector2(4, 162)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_ysn8j")
