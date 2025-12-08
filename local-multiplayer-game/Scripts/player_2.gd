@@ -165,6 +165,7 @@ var tongueHold
 var tongueTap
 
 func _ready():
+	print(otherPlayer)
 	wasMovingR = true
 	anim = PlayerSprite
 	col = PlayerCollider
@@ -477,16 +478,7 @@ func _fire_tongue(direction):
 	newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)
 	await get_tree().create_timer(0.5).timeout
 	tongueFiring = false
-	#
-	#if direction == Vector2(1,0):
-		#$AnimationPlayer.play("TongueFireRight")
-	#if direction == Vector2(0, -1):
-		#$AnimationPlayer.play("TongueFireUp")
-	#if direction == Vector2(-1,0):
-		#$AnimationPlayer.play("TongueFireLeft")
-	# await get_tree().create_timer(0.6).timeout
-	# tongue.visible = false
-	# tongueFiring = false
+	tongue.visible = false
 
 #this just checks whether the tongue has hit something
 func _on_tongue_body_entered(body: Node2D) -> void:
@@ -510,8 +502,6 @@ func _getStunned(time):
 func pullToObject(body):
 	if tongueFiring and body is not TileMapLayer:
 		var pullTween = get_tree().create_tween()
-		print(global_position)
-		print(body.position)
 		pullTween.tween_property(self, "position", body.position + Vector2(8, -14), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 		pullTween.play()
 	return
