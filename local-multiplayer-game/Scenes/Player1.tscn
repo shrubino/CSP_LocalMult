@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bro3dprem6cm0"]
+[gd_scene load_steps=28 format=3 uid="uid://bro3dprem6cm0"]
 
 [ext_resource type="Script" uid="uid://cioybd2nxo0sh" path="res://Scripts/player_1.gd" id="1_n5fpy"]
 [ext_resource type="Texture2D" uid="uid://bmwbp3topkeut" path="res://Resources/Frog/Blue/IdleBlueSheet.png" id="2_n5fpy"]
@@ -172,74 +172,6 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="Animation" id="Animation_dvont"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tongue:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2ale3"]
-resource_name = "TongueFireLeft"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tongue:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-60, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_n5fpy"]
-resource_name = "TongueFireRight"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tongue:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6022733),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(60, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_1yta1"]
-resource_name = "TongueFireUp"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tongue:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -60), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvont"]
-_data = {
-&"RESET": SubResource("Animation_dvont"),
-&"TongueFireLeft": SubResource("Animation_2ale3"),
-&"TongueFireRight": SubResource("Animation_n5fpy"),
-&"TongueFireUp": SubResource("Animation_1yta1")
-}
-
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue") groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_n5fpy")
@@ -284,10 +216,5 @@ metadata/_edit_use_anchors_ = true
 sprite_frames = SubResource("SpriteFrames_2ale3")
 animation = &"idle"
 autoplay = "idle"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_dvont")
-}
 
 [connection signal="body_entered" from="Tongue" to="." method="_on_tongue_body_entered"]
