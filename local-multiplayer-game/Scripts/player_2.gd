@@ -15,7 +15,7 @@ extends CharacterBody2D
 #INFO OVERALL ENABLED/DISABLED
 @onready var can_input := true
 
-#INFO GET REFERN
+#INFO GET REFERENCE TO OTHER PLAYER
 @onready var otherPlayer = get_tree().get_first_node_in_group("Player1")
 
 #INFO HORIZONTAL MOVEMENT 
@@ -463,8 +463,8 @@ func _endGroundPound():
 	gravityActive = true
 
 func _fire_tongue(direction):
+	tongueFiring = true
 	tongue.visible = true
-	print(velocity)
 	var newTween = get_tree().create_tween()
 	# newTween.tween_property(tongue, "position", position + (velocity.normalized() * 200), 0.25)
 	# newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)
@@ -472,9 +472,10 @@ func _fire_tongue(direction):
 	var tongue_direction = Vector2.RIGHT if $Sprite2D.flip_h else Vector2.LEFT
 	if Input.is_action_pressed("Up"):
 		tongue_direction = Vector2.UP
-	newTween.tween_property(tongue, "position", (tongue_direction * 50), 0.25)
+	newTween.tween_property(tongue, "position", (tongue_direction * 80), 0.25)
 	newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)
-
+	await get_tree().create_timer(0.5).timeout
+	tongueFiring = false
 	#
 	#if direction == Vector2(1,0):
 		#$AnimationPlayer.play("TongueFireRight")
@@ -506,10 +507,10 @@ func _getStunned(time):
 	isStunned = false
 
 func pullToObject(body):
-	# var pullTween = get_tree().create_tween()
-	# pullTween.tween_property(self, "position", Vector2(8*32, 4*32) + Vector2(8, -14), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	# pullTween.play()
-	var pullVector = body.global_position - position
-	velocity += pullVector.normalized() * 500
-	velocity.y -= 200
-	jumpCount += 1
+	if tongueFiring and body is not TileMapLayer:
+		var pullTween = get_tree().create_tween()
+		print(global_position)
+		print(body.position)
+		pullTween.tween_property(self, "position", body.position + Vector2(8, -14), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		pullTween.play()
+	return
