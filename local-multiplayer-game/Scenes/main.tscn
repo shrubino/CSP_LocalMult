@@ -151,6 +151,9 @@ visible = false
 position = Vector2(80, 90)
 texture = ExtResource("3_8gbba")
 
+[node name="Object Layer" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1" index="1"]
+visible = false
+
 [node name="RightViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
 
