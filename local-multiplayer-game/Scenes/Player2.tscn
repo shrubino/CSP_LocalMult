@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://dwacpckxvli0b"]
 
-[ext_resource type="Script" uid="uid://ck1liuedogadu" path="res://Scripts/player_2.gd" id="1_cgts5"]
+[ext_resource type="Script" uid="uid://cruxxjq43a8h4" path="res://Scripts/player_2.gd" id="1_cgts5"]
 [ext_resource type="Texture2D" uid="uid://p8xntddf2eoh" path="res://Resources/Frog/Red/IdleRedSheet.png" id="2_kfthp"]
 [ext_resource type="Texture2D" uid="uid://cc7ial427e4d7" path="res://Resources/Frog/Jumps/RedJump_New.png" id="3_3tsci"]
 [ext_resource type="Texture2D" uid="uid://bofjs07ho6eph" path="res://Resources/Frog/Red/RedRunSpriteSheet.png" id="3_encxe"]
