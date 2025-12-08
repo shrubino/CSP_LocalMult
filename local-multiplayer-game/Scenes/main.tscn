@@ -35,48 +35,103 @@ use_hdr_2d = true
 size = Vector2i(160, 180)
 render_target_update_mode = 4
 
+[node name="ParallaxLayer" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+scroll_scale = Vector2(0, 1)
+repeat_size = Vector2(0, 918)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxLayer"]
+position = Vector2(81, -260)
+texture = ExtResource("2_jjvhh")
+
+[node name="ParallaxLayer2" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+scroll_scale = Vector2(0, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxLayer2"]
+position = Vector2(81, -260)
+texture = ExtResource("3_ynf5e")
+
+[node name="ParallaxLayer3" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+scroll_scale = Vector2(0, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxLayer3"]
+position = Vector2(81, -260)
+texture = ExtResource("4_hptm8")
+
+[node name="ParallaxLayer4" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+scroll_scale = Vector2(0, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxLayer4"]
+position = Vector2(81, -238)
+texture = ExtResource("5_d1ilt")
+
+[node name="ParallaxLayer5" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+scroll_scale = Vector2(0, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxLayer5"]
+position = Vector2(81, -260)
+texture = ExtResource("6_6iyac")
+
+[node name="ParallaxLayer6" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+scroll_scale = Vector2(0, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxLayer6"]
+position = Vector2(81, -227)
+texture = ExtResource("7_fdnlq")
+
 [node name="BG_Sky1" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+visible = false
 position = Vector2(80, -279)
 texture = ExtResource("2_jjvhh")
 
 [node name="BG_Sky2" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+visible = false
 position = Vector2(80, -709)
 texture = ExtResource("2_jjvhh")
 
 [node name="BG_Sky3" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+visible = false
 position = Vector2(80, -1086)
 texture = ExtResource("2_jjvhh")
 
 [node name="BG_Sky4" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+visible = false
 position = Vector2(80, -1554)
 texture = ExtResource("2_jjvhh")
 
 [node name="BG_Sky5" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+visible = false
 position = Vector2(80, -2067)
 texture = ExtResource("2_jjvhh")
 
 [node name="BG_Sky6" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+visible = false
 position = Vector2(80, -2550)
 texture = ExtResource("2_jjvhh")
 
 [node name="BG_1" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+visible = false
 position = Vector2(80, -279)
 texture = ExtResource("3_ynf5e")
 
 [node name="BG_2" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+visible = false
 position = Vector2(80, -279)
 texture = ExtResource("4_hptm8")
 
 [node name="BG_3" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+visible = false
 position = Vector2(80, -279)
 texture = ExtResource("5_d1ilt")
 
 [node name="BG_4" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
-position = Vector2(80, -279)
+visible = false
+position = Vector2(81, -214)
 texture = ExtResource("6_6iyac")
 
 [node name="BG_5" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
-position = Vector2(80, -279)
+visible = false
+position = Vector2(80, -225)
 texture = ExtResource("7_fdnlq")
 
 [node name="LeftCamera2D" type="Camera2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
