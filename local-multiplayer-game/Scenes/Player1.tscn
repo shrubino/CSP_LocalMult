@@ -172,7 +172,7 @@ animations = [{
 "speed": 9.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue") groups=["Player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue") groups=["Player", "Player1"]]
 collision_layer = 2
 script = ExtResource("1_n5fpy")
 leftRaycast = NodePath("LeftCast")
