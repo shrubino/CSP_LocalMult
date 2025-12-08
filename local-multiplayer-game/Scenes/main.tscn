@@ -1,13 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvxvsj7flm3en"]
+[gd_scene load_steps=11 format=3 uid="uid://cvxvsj7flm3en"]
 
 [ext_resource type="Script" uid="uid://ccwww0b6y12um" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://drjc2wiskis6p" path="res://Scenes/Level1.tscn" id="2_8gbba"]
-[ext_resource type="Texture2D" uid="uid://3uen25ursun8" path="res://Resources/Background/background0.png" id="2_jjvhh"]
+[ext_resource type="AudioStream" uid="uid://cnyf8nx1j5bmu" path="res://Audio/Pixel Burnout.mp3" id="2_hptm8"]
+[ext_resource type="Texture2D" uid="uid://cyq5amcm5ncct" path="res://Resources/NEWBACKGROUND/NEWbackgroundO.png" id="2_jjvhh"]
 [ext_resource type="Texture2D" uid="uid://belb1fcyepepe" path="res://Resources/Background/FRAME.png" id="3_8gbba"]
-[ext_resource type="Texture2D" uid="uid://be37xj113eghk" path="res://Resources/Background/background1.png" id="3_kry3j"]
+[ext_resource type="Texture2D" uid="uid://5f848xccfx44" path="res://Resources/NEWBACKGROUND/NEWbackground1.png" id="3_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://de6d8qaodh2to" path="res://Resources/NEWBACKGROUND/NEWbackground2.png" id="4_hptm8"]
+[ext_resource type="Texture2D" uid="uid://fjl83ltet76b" path="res://Resources/NEWBACKGROUND/NEWbackground3.png" id="5_d1ilt"]
+[ext_resource type="Texture2D" uid="uid://cb5t6xngnn4uw" path="res://Resources/NEWBACKGROUND/NEWbackground4.png" id="6_6iyac"]
+[ext_resource type="Texture2D" uid="uid://phbdewo06ko1" path="res://Resources/NEWBACKGROUND/NEWbackground5.png" id="7_fdnlq"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bo1nx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_hptm8")
+autoplay = true
+parameters/looping = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_right = 40.0
@@ -25,13 +35,49 @@ use_hdr_2d = true
 size = Vector2i(160, 180)
 render_target_update_mode = 4
 
-[node name="BG_0" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
-position = Vector2(80, 90)
+[node name="BG_Sky1" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+position = Vector2(80, -279)
+texture = ExtResource("2_jjvhh")
+
+[node name="BG_Sky2" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+position = Vector2(80, -709)
+texture = ExtResource("2_jjvhh")
+
+[node name="BG_Sky3" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+position = Vector2(80, -1086)
+texture = ExtResource("2_jjvhh")
+
+[node name="BG_Sky4" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+position = Vector2(80, -1554)
+texture = ExtResource("2_jjvhh")
+
+[node name="BG_Sky5" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+position = Vector2(80, -2067)
+texture = ExtResource("2_jjvhh")
+
+[node name="BG_Sky6" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+position = Vector2(80, -2550)
 texture = ExtResource("2_jjvhh")
 
 [node name="BG_1" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
-position = Vector2(80, 90)
-texture = ExtResource("3_kry3j")
+position = Vector2(80, -279)
+texture = ExtResource("3_ynf5e")
+
+[node name="BG_2" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+position = Vector2(80, -279)
+texture = ExtResource("4_hptm8")
+
+[node name="BG_3" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+position = Vector2(80, -279)
+texture = ExtResource("5_d1ilt")
+
+[node name="BG_4" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+position = Vector2(80, -279)
+texture = ExtResource("6_6iyac")
+
+[node name="BG_5" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+position = Vector2(80, -279)
+texture = ExtResource("7_fdnlq")
 
 [node name="LeftCamera2D" type="Camera2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
 unique_name_in_owner = true
@@ -45,6 +91,7 @@ position_smoothing_enabled = true
 unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/CanvasLayer"]
 position = Vector2(80, 90)
@@ -62,13 +109,49 @@ use_hdr_2d = true
 size = Vector2i(160, 180)
 render_target_update_mode = 4
 
-[node name="BG_0" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
-position = Vector2(240, 90)
+[node name="BG_Sky1" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+position = Vector2(239, -279)
+texture = ExtResource("2_jjvhh")
+
+[node name="BG_Sky2" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+position = Vector2(239, -709)
+texture = ExtResource("2_jjvhh")
+
+[node name="BG_Sky3" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+position = Vector2(239, -1086)
+texture = ExtResource("2_jjvhh")
+
+[node name="BG_Sky4" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+position = Vector2(239, -1554)
+texture = ExtResource("2_jjvhh")
+
+[node name="BG_Sky5" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+position = Vector2(239, -2067)
+texture = ExtResource("2_jjvhh")
+
+[node name="BG_Sky6" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+position = Vector2(239, -2509)
 texture = ExtResource("2_jjvhh")
 
 [node name="BG_1" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
-position = Vector2(240, 90)
-texture = ExtResource("3_kry3j")
+position = Vector2(239, -279)
+texture = ExtResource("3_ynf5e")
+
+[node name="BG_2" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+position = Vector2(239, -279)
+texture = ExtResource("4_hptm8")
+
+[node name="BG_3" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+position = Vector2(239, -279)
+texture = ExtResource("5_d1ilt")
+
+[node name="BG_4" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+position = Vector2(239, -279)
+texture = ExtResource("6_6iyac")
+
+[node name="BG_5" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+position = Vector2(239, -279)
+texture = ExtResource("7_fdnlq")
 
 [node name="RightCamera2D" type="Camera2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
 unique_name_in_owner = true
@@ -79,6 +162,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/CanvasLayer"]
 position = Vector2(80, 90)
@@ -88,3 +172,4 @@ texture = ExtResource("3_8gbba")
 offset_left = 160.0
 offset_right = 164.0
 offset_bottom = 180.0
+color = Color(0.050980393, 0.3764706, 0.07058824, 1)
