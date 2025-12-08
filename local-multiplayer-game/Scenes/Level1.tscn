@@ -101,7 +101,7 @@ tile_map_data = PackedByteArray("AAD4/1f/AAADAAEAAAD4/1j/AAADAAEAAAD4/1n/AAADAAE
 tile_set = SubResource("TileSet_slnnj")
 
 [node name="Player1" parent="." instance=ExtResource("2_6l7je")]
-position = Vector2(153, 164)
+position = Vector2(97, 164)
 run = false
 idle = false
 tongueSpeed = 100
@@ -111,12 +111,12 @@ canStick = true
 tongueStunTime = 2.0
 
 [node name="Player2" parent="." groups=["Player"] instance=ExtResource("3_jv6wh")]
-position = Vector2(241, -2403)
+position = Vector2(202, 164)
 
 [node name="Items" type="Node" parent="."]
 
 [node name="SupeerJump_1" parent="Items" instance=ExtResource("4_jghel")]
-position = Vector2(230, 164)
+position = Vector2(275, -128)
 
 [node name="SupeerJump_2" parent="Items" instance=ExtResource("4_jghel")]
 position = Vector2(302, -542)
@@ -126,7 +126,7 @@ position = Vector2(47, -352)
 itemType = 1
 
 [node name="DoubleJump_2" parent="Items" instance=ExtResource("4_jghel")]
-position = Vector2(47, 167)
+position = Vector2(49, -990)
 itemType = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
