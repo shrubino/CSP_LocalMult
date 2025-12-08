@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://vmo7thkk6ugc"]
+
+[ext_resource type="Texture2D" uid="uid://cwra40fds0cwo" path="res://Resources/spritesheet.png" id="1_2r5i3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r5i3"]
+size = Vector2(30, 13)
+
+[node name="Mushroom" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2r5i3")
+region_enabled = true
+region_rect = Rect2(0, 36, 32, 27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_2r5i3")

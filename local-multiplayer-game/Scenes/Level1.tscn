@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://cwra40fds0cwo" path="res://Resources/spritesheet.png" id="1_joc8x"]
 [ext_resource type="PackedScene" uid="uid://bro3dprem6cm0" path="res://Scenes/Player1.tscn" id="2_6l7je"]
-[ext_resource type="PackedScene" uid="uid://dwacpckxvli0b" path="res://Scenes/Player2.tscn" id="3_jv6wh"]
-[ext_resource type="PackedScene" uid="uid://cf6nlic2jww2" path="res://Scenes/item.tscn" id="4_jghel"]
+[ext_resource type="PackedScene" path="res://Scenes/player_2.tscn" id="3_jv6wh"]
+[ext_resource type="PackedScene" path="res://Scenes/item.tscn" id="4_jghel"]
 [ext_resource type="Texture2D" uid="uid://ctc55x6e6ae34" path="res://Resources/Tiles/MUSHROOM PLATFORM.png" id="8_rpty4"]
-[ext_resource type="PackedScene" uid="uid://btwwcxhsmo6km" path="res://Scenes/dragon_fly.tscn" id="11_2h8qs"]
-[ext_resource type="PackedScene" uid="uid://cwls1y4eehxsq" path="res://Scenes/end.tscn" id="13_6jj8j"]
+[ext_resource type="PackedScene" path="res://Scenes/dragon_fly.tscn" id="11_2h8qs"]
+[ext_resource type="PackedScene" path="res://Scenes/end.tscn" id="13_6jj8j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jghel"]
 texture = ExtResource("1_joc8x")
