@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnyf8nx1j5bmu"
+path="res://.godot/imported/Pixel Burnout.mp3-6d3a008d552ab5fadf7ea2c46557a0d1.mp3str"
+
+[deps]
+
+source_file="res://Audio/Pixel Burnout.mp3"
+dest_files=["res://.godot/imported/Pixel Burnout.mp3-6d3a008d552ab5fadf7ea2c46557a0d1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
