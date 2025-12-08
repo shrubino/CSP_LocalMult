@@ -91,10 +91,10 @@ extends CharacterBody2D
 @export var idle: bool
 ##Animations must be named "walk" all lowercase as the check box says
 @export var walk: bool
-##Animations must be named "slide" all lowercase as the check box says
-@export var slide: bool
 ##Animations must be named "latch" all lowercase as the check box says
 @export var falling: bool
+#Animation for sun on ground
+@export var stun : bool
 
 @export_category("Tongue Controls")
 ##Drop in an instance of the tongue, right now let's say it's a circular area2d 
@@ -463,12 +463,16 @@ func _endGroundPound():
 
 func _fire_tongue(direction):
 	tongue.visible = true
-	if direction == Vector2(1,0):
-		$AnimationPlayer.play("TongueFireRight")
-	if direction == Vector2(0, -1):
-		$AnimationPlayer.play("TongueFireUp")
-	if direction == Vector2(-1,0):
-		$AnimationPlayer.play("TongueFireLeft")
+	var newTween = get_tree().create_tween()
+	newTween.tween_property(tongue, "position", position + velocity * 200, 0.5)
+	
+	#
+	#if direction == Vector2(1,0):
+		#$AnimationPlayer.play("TongueFireRight")
+	#if direction == Vector2(0, -1):
+		#$AnimationPlayer.play("TongueFireUp")
+	#if direction == Vector2(-1,0):
+		#$AnimationPlayer.play("TongueFireLeft")
 	await get_tree().create_timer(0.6).timeout
 	tongue.visible = false
 	tongueFiring = false

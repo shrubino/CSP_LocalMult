@@ -464,15 +464,27 @@ func _endGroundPound():
 
 func _fire_tongue(direction):
 	tongue.visible = true
-	if direction == Vector2(1,0):
-		$AnimationPlayer.play("TongueFireRight")
-	if direction == Vector2(0, -1):
-		$AnimationPlayer.play("TongueFireUp")
-	if direction == Vector2(-1,0):
-		$AnimationPlayer.play("TongueFireLeft")
-	await get_tree().create_timer(0.6).timeout
-	tongue.visible = false
-	tongueFiring = false
+	print(velocity)
+	var newTween = get_tree().create_tween()
+	# newTween.tween_property(tongue, "position", position + (velocity.normalized() * 200), 0.25)
+	# newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)
+	
+	var tongue_direction = Vector2.RIGHT if $Sprite2D.flip_h else Vector2.LEFT
+	if Input.is_action_pressed("Up"):
+		tongue_direction = Vector2.UP
+	newTween.tween_property(tongue, "position", (tongue_direction * 50), 0.25)
+	newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)
+
+	#
+	#if direction == Vector2(1,0):
+		#$AnimationPlayer.play("TongueFireRight")
+	#if direction == Vector2(0, -1):
+		#$AnimationPlayer.play("TongueFireUp")
+	#if direction == Vector2(-1,0):
+		#$AnimationPlayer.play("TongueFireLeft")
+	# await get_tree().create_timer(0.6).timeout
+	# tongue.visible = false
+	# tongueFiring = false
 
 #this just checks whether the tongue has hit something
 func _on_tongue_body_entered(body: Node2D) -> void:
@@ -494,9 +506,10 @@ func _getStunned(time):
 	isStunned = false
 
 func pullToObject(body):
-	print(body.global_position)
-	print(position)
+	# var pullTween = get_tree().create_tween()
+	# pullTween.tween_property(self, "position", Vector2(8*32, 4*32) + Vector2(8, -14), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	# pullTween.play()
 	var pullVector = body.global_position - position
 	velocity += pullVector.normalized() * 500
-	#velocity.y -= 800
+	velocity.y -= 200
 	jumpCount += 1
