@@ -477,6 +477,7 @@ func _fire_tongue(direction):
 	newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)
 	await get_tree().create_timer(0.5).timeout
 	tongueFiring = false
+	tongue.visible = false
 	#
 	#if direction == Vector2(1,0):
 		#$AnimationPlayer.play("TongueFireRight")
