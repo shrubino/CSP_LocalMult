@@ -127,11 +127,8 @@ position = Vector2(0, 163)
 position = Vector2(97, 164)
 run = false
 idle = false
-tongueSpeed = 100
-tongueRange = 110
-tongueResetTimer = 1.0
-canStick = true
-tongueStunTime = 2.0
+
+[node name="Player2" parent="." instance=ExtResource("4_ysn8j")]
 
 [node name="Items" type="Node" parent="."]
 
@@ -253,9 +250,38 @@ position = Vector2(4, 162)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_ysn8j")
 
+[node name="D_WorldBoundry" type="StaticBody2D" parent="WorldBoundries"]
+position = Vector2(-4, 193)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundries/D_WorldBoundry"]
+position = Vector2(4, 162)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_ysn8j")
+
 [node name="End" parent="." node_paths=PackedStringArray("win_panel", "win_label") instance=ExtResource("13_6jj8j")]
-position = Vector2(206, 88)
+position = Vector2(148, -86)
 win_panel = NodePath("../CanvasLayer/WinPanel")
 win_label = NodePath("../CanvasLayer/WinPanel/WinLabel")
 
+[node name="Mushroom" parent="." instance=ExtResource("8_6ll4n")]
+position = Vector2(266, 118)
+
+[node name="Mushroom2" parent="." instance=ExtResource("8_6ll4n")]
+position = Vector2(47, 128)
+
+[node name="Mushroom3" parent="." instance=ExtResource("8_6ll4n")]
+position = Vector2(267, 8)
+
+[node name="Sprite2D" parent="Mushroom3" index="0"]
+flip_h = true
+
+[node name="Mushroom4" parent="." instance=ExtResource("8_6ll4n")]
+position = Vector2(195, 64)
+
+[node name="Mushroom5" parent="." instance=ExtResource("8_6ll4n")]
+position = Vector2(85, 42)
+
 [connection signal="pressed" from="CanvasLayer/WinPanel/RestartButton" to="Player1" method="_on_restart_button_pressed"]
+
+[editable path="Mushroom3"]

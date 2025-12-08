@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Player1 #Detecting player class in item script
+class_name Player1
 
 @export var README: String = "This is code Stephen stole from https://github.com/Noah-Erz/Ultimate-Platformer-Controller-2D -- it has been HEAVILY modified to delete dashing, rolling, crouching, and wall latching. Use at your own risk, myself included."
 #INFO READEME 
@@ -16,7 +16,7 @@ class_name Player1 #Detecting player class in item script
 #INFO OVERALL ENABLED/DISABLED
 @onready var can_input := true
 
-#INFO GET REFERN
+#INFO GET REFERENCE TO OTHER PLAYER
 @onready var otherPlayer = get_tree().get_first_node_in_group("Player2")
 
 #INFO HORIZONTAL MOVEMENT 
@@ -106,10 +106,11 @@ class_name Player1 #Detecting player class in item script
 @export var tongueRange := 110 #this currently DOES NOTHING
 ##Reset timer for when the tongue sticks to something
 @export var tongueResetTimer := 1.0
-#Stops from re-sticking to the same thing twice or twice in one shot
+##Stops from re-sticking to the same thing twice or twice in one shot
 @export var canStick := true
 ##Timer for stun length
 @export var tongueStunTime := 2.0
+
 
 @onready var isStunned := false
 
@@ -463,17 +464,30 @@ func _endGroundPound():
 	gravityActive = true
 
 func _fire_tongue(direction):
+	tongueFiring = true
 	tongue.visible = true
-	if direction == Vector2(1,0):
-		$AnimationPlayer.play("TongueFireRight")
-	if direction == Vector2(0, -1):
-		$AnimationPlayer.play("TongueFireUp")
-	if direction == Vector2(-1,0):
-		$AnimationPlayer.play("TongueFireLeft")
-	await get_tree().create_timer(0.6).timeout
-	tongue.visible = false
+	var newTween = get_tree().create_tween()
+	# newTween.tween_property(tongue, "position", position + (velocity.normalized() * 200), 0.25)
+	# newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)
+	
+	var tongue_direction = Vector2.RIGHT if $Sprite2D.flip_h else Vector2.LEFT
+	if Input.is_action_pressed("W"):
+		tongue_direction = Vector2.UP
+	newTween.tween_property(tongue, "position", (tongue_direction * 80), 0.25)
+	newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)
+	await get_tree().create_timer(0.5).timeout
 	tongueFiring = false
-
+	tongue.visible = false
+	#
+	#if direction == Vector2(1,0):
+		#$AnimationPlayer.play("TongueFireRight")
+	#if direction == Vector2(0, -1):
+		#$AnimationPlayer.play("TongueFireUp")
+	#if direction == Vector2(-1,0):
+		#$AnimationPlayer.play("TongueFireLeft")
+	# await get_tree().create_timer(0.6).timeout
+	# tongue.visible = false
+	# tongueFiring = false
 
 #this just checks whether the tongue has hit something
 func _on_tongue_body_entered(body: Node2D) -> void:
@@ -495,9 +509,10 @@ func _getStunned(time):
 	isStunned = false
 
 func pullToObject(body):
-	print(body.global_position)
-	print(position)
-	var pullVector = body.global_position - position
-	velocity += pullVector.normalized() * 500
-	#velocity.y -= 800
-	jumpCount += 1
+	if tongueFiring and body is not TileMapLayer:
+		var pullTween = get_tree().create_tween()
+		print(global_position)
+		print(body.position)
+		pullTween.tween_property(self, "position", body.position + Vector2(8, -14), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		pullTween.play()
+	return
