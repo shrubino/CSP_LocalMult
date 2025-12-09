@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://rychtrincpob"]
+
+[ext_resource type="Script" uid="uid://wkls4tpy0e2n" path="res://Scripts/spider.gd" id="1_gedd4"]
+[ext_resource type="Texture2D" uid="uid://dbl2pl8lc2ae5" path="res://Resources/spidersheet.png" id="1_h33fn"]
+[ext_resource type="Texture2D" uid="uid://vtj3o84hpue7" path="res://Resources/Prototype/monochrome_tilemap_transparent.png" id="3_sbdki"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gedd4"]
+atlas = ExtResource("1_h33fn")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbdki"]
+atlas = ExtResource("1_h33fn")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qu26k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gedd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbdki")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxbgl"]
+size = Vector2(17.5, 9)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sbdki"]
+radius = 9.0
+height = 26.0
+
+[node name="Spider" type="Node2D"]
+script = ExtResource("1_gedd4")
+
+[node name="L" type="Sprite2D" parent="."]
+texture = ExtResource("3_sbdki")
+region_enabled = true
+region_rect = Rect2(106, 296, 7, 2)
+
+[node name="L2" type="Sprite2D" parent="."]
+texture = ExtResource("3_sbdki")
+region_enabled = true
+region_rect = Rect2(106, 296, 7, 2)
+
+[node name="R" type="Sprite2D" parent="."]
+texture = ExtResource("3_sbdki")
+region_enabled = true
+region_rect = Rect2(106, 296, 7, 2)
+
+[node name="R2" type="Sprite2D" parent="."]
+texture = ExtResource("3_sbdki")
+region_enabled = true
+region_rect = Rect2(106, 296, 7, 2)
+
+[node name="SpiderBody" type="StaticBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpiderBody"]
+sprite_frames = SubResource("SpriteFrames_qu26k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpiderBody"]
+shape = SubResource("RectangleShape2D_nxbgl")
+
+[node name="Area2D" type="Area2D" parent="SpiderBody"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpiderBody/Area2D"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_sbdki")
+
+[connection signal="body_entered" from="SpiderBody/Area2D" to="." method="_on_area_2d_body_entered"]

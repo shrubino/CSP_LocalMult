@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dft7xg2cni7a5" path="res://Resources/Tiles/STARTLEDGE (1).png" id="14_jgorv"]
 [ext_resource type="PackedScene" uid="uid://c7n545fkqnejb" path="res://leaf_platform.tscn" id="15_0wsr5"]
 [ext_resource type="PackedScene" uid="uid://b280w46dp8xsh" path="res://long_mushroom.tscn" id="16_ulvkb"]
-[ext_resource type="Texture2D" uid="uid://bim0ji5ri58wy" path="res://Resources/Tiles/IMG_1387.PNG" id="20_yji5v"]
+[ext_resource type="PackedScene" uid="uid://rychtrincpob" path="res://Scenes/spider.tscn" id="16_yji5v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jghel"]
 texture = ExtResource("1_joc8x")
@@ -274,7 +274,7 @@ autoplay = "move"
 
 [node name="DragonFly_2" parent="DragonFlies" instance=ExtResource("11_2h8qs")]
 z_index = 1
-position = Vector2(117, -244)
+position = Vector2(143, -218)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DragonFlies/DragonFly_2"]
 libraries = {
@@ -329,16 +329,16 @@ libraries = {
 }
 autoplay = "move"
 
-[node name="WorldBoundries" type="Node" parent="."]
+[node name="WorldBoundries" type="Node" parent="." groups=["WorldBoundaries"]]
 
-[node name="L_WorldBoundry" type="StaticBody2D" parent="WorldBoundries"]
+[node name="L_WorldBoundry" type="StaticBody2D" parent="WorldBoundries" groups=["WorldBoundaries"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundries/L_WorldBoundry"]
 position = Vector2(4, 162)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_ysn8j")
 
-[node name="R_WorldBoundry" type="StaticBody2D" parent="WorldBoundries"]
+[node name="R_WorldBoundry" type="StaticBody2D" parent="WorldBoundries" groups=["WorldBoundaries"]]
 position = Vector2(317, 317)
 rotation = -3.1415925
 
@@ -347,7 +347,7 @@ position = Vector2(4, 162)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_ysn8j")
 
-[node name="D_WorldBoundry" type="StaticBody2D" parent="WorldBoundries"]
+[node name="D_WorldBoundry" type="StaticBody2D" parent="WorldBoundries" groups=["WorldBoundaries"]]
 position = Vector2(-4, 193)
 rotation = -1.5707964
 
@@ -360,6 +360,9 @@ shape = SubResource("WorldBoundaryShape2D_ysn8j")
 position = Vector2(17.999992, 178)
 rotation = 1.5707964
 texture = ExtResource("14_jgorv")
+
+[node name="Spider" parent="WorldBoundries" instance=ExtResource("16_yji5v")]
+position = Vector2(164, 101)
 
 [node name="End" parent="." node_paths=PackedStringArray("win_panel", "win_label") instance=ExtResource("13_6jj8j")]
 visible = false

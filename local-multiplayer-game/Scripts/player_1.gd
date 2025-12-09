@@ -393,11 +393,12 @@ func _physics_process(delta):
 			
 	#INFO Ground Pound
 	if groundPound and downTap and !is_on_floor() and !is_on_wall():
-		groundPounding = true
-		gravityActive = false
-		velocity.y = 0
-		await get_tree().create_timer(groundPoundPause).timeout
-		_groundPound()
+		pass #WE'RE REMOVING GROUND POUND DUE TO PLAYER SKILL LOL
+		#groundPounding = true
+		#gravityActive = false
+		#velocity.y = 0
+		#await get_tree().create_timer(groundPoundPause).timeout
+		#_groundPound()
 	if is_on_floor() and groundPounding:
 		_endGroundPound()
 	move_and_slide()
@@ -523,8 +524,9 @@ func _getStunned(time):
 	isStunned = false
 
 func pullToObject(body):
-	if tongueFiring and body is not TileMapLayer:
+	if tongueFiring and body is not TileMapLayer and !body.is_in_group("WorldBoundaries"):
+		print(body)
 		var pullTween = get_tree().create_tween()
-		pullTween.tween_property(self, "position", body.position + Vector2(8, -14), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		pullTween.tween_property(self, "position", body.position + Vector2(8, -25), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 		pullTween.play()
 	return

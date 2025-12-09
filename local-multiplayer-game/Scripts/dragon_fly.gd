@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if position.x < (global_position.x - 55) or position.x > (global_position.x + 55):
+	if position.x < (startingPoint.x - 55) or position.x > (startingPoint.x + 55):
 		if canflip == true:
 			canflip = false
 			sprite.flip_h = not sprite.flip_h
