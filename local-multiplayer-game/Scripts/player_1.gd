@@ -121,7 +121,7 @@ class_name Player1
 
 
 @onready var isStunned := false
-
+@onready var timer := 1.4
 #Variables determined by the developer set ones.
 var appliedGravity: float
 var appliedTerminalVelocity: float

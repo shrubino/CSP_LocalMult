@@ -558,7 +558,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"groundtongue",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -686,8 +686,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_2ale3")
-animation = &"groundtongue"
+animation = &"groundstun"
 autoplay = "idle"
-frame_progress = 0.6120037
 
 [connection signal="body_entered" from="Tongue" to="." method="_on_tongue_body_entered"]

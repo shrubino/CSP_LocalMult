@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://drjc2wiskis6p"]
+[gd_scene load_steps=35 format=4 uid="uid://drjc2wiskis6p"]
 
 [ext_resource type="Texture2D" uid="uid://cwra40fds0cwo" path="res://Resources/spritesheet.png" id="1_joc8x"]
 [ext_resource type="PackedScene" uid="uid://bro3dprem6cm0" path="res://Scenes/Player1.tscn" id="2_6l7je"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b3d8mwqwwqlqe" path="res://Resources/Tiles/IMG_1382.PNG" id="9_yji5v"]
 [ext_resource type="PackedScene" uid="uid://btwwcxhsmo6km" path="res://Scenes/dragon_fly.tscn" id="11_2h8qs"]
 [ext_resource type="PackedScene" uid="uid://cwls1y4eehxsq" path="res://Scenes/end.tscn" id="13_6jj8j"]
+[ext_resource type="PackedScene" uid="uid://dh6bypi4n4ll3" path="res://item2.tscn" id="13_q1ws5"]
 [ext_resource type="Texture2D" uid="uid://dft7xg2cni7a5" path="res://Resources/Tiles/STARTLEDGE (1).png" id="14_jgorv"]
 [ext_resource type="PackedScene" uid="uid://c7n545fkqnejb" path="res://leaf_platform.tscn" id="15_0wsr5"]
 [ext_resource type="PackedScene" uid="uid://b280w46dp8xsh" path="res://long_mushroom.tscn" id="16_ulvkb"]
@@ -200,26 +201,37 @@ position = Vector2(214, 155)
 
 [node name="Items" type="Node" parent="."]
 
+[node name="SupeerJump_5" parent="Items" instance=ExtResource("4_jghel")]
+position = Vector2(325, -1198)
+jumpMultiplier = 1.25
+
 [node name="SupeerJump_4" parent="Items" instance=ExtResource("4_jghel")]
 position = Vector2(89, -675)
+jumpMultiplier = 1.25
 
 [node name="SupeerJump_3" parent="Items" instance=ExtResource("4_jghel")]
 position = Vector2(87, 16)
-
-[node name="SupeerJump_1" parent="Items" instance=ExtResource("4_jghel")]
-position = Vector2(275, -128)
+jumpMultiplier = 1.25
 
 [node name="SupeerJump_2" parent="Items" instance=ExtResource("4_jghel")]
 position = Vector2(302, -542)
-jumpMultiplier = 1.0
+jumpMultiplier = 1.25
 
-[node name="DoubleJump_1" parent="Items" instance=ExtResource("4_jghel")]
-position = Vector2(47, -352)
-itemType = 1
+[node name="Item2" parent="Items" instance=ExtResource("13_q1ws5")]
+position = Vector2(69, -304)
+jumpMultiplier = 1.25
 
-[node name="DoubleJump_2" parent="Items" instance=ExtResource("4_jghel")]
-position = Vector2(49, -990)
-itemType = 1
+[node name="Item4" parent="Items" instance=ExtResource("13_q1ws5")]
+position = Vector2(23, -1324)
+jumpMultiplier = 1.25
+
+[node name="Item5" parent="Items" instance=ExtResource("13_q1ws5")]
+position = Vector2(334, -1883)
+jumpMultiplier = 1.25
+
+[node name="Item3" parent="Items" instance=ExtResource("13_q1ws5")]
+position = Vector2(156, -948)
+jumpMultiplier = 1.25
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -386,6 +398,12 @@ position = Vector2(84, -421)
 [node name="Sprite2D" parent="Plaforms/leaf platform6" index="0"]
 flip_h = true
 
+[node name="leaf platform18" parent="Plaforms" instance=ExtResource("15_0wsr5")]
+position = Vector2(142, -1871)
+
+[node name="Sprite2D" parent="Plaforms/leaf platform18" index="0"]
+flip_h = true
+
 [node name="leaf platform15" parent="Plaforms" instance=ExtResource("15_0wsr5")]
 position = Vector2(77, -1614)
 
@@ -529,6 +547,9 @@ position = Vector2(92, -363)
 [node name="Mushroom5" parent="Plaforms" instance=ExtResource("8_6ll4n")]
 position = Vector2(163, 33)
 
+[node name="LongMushroom11" parent="Plaforms" instance=ExtResource("16_ulvkb")]
+position = Vector2(200, -1964)
+
 [node name="LongMushroom9" parent="Plaforms" instance=ExtResource("16_ulvkb")]
 position = Vector2(149, -1668)
 
@@ -557,6 +578,7 @@ position = Vector2(197, -281)
 position = Vector2(183, -63)
 
 [editable path="Plaforms/leaf platform6"]
+[editable path="Plaforms/leaf platform18"]
 [editable path="Plaforms/leaf platform15"]
 [editable path="Plaforms/leaf platform13"]
 [editable path="Plaforms/leaf platform16"]

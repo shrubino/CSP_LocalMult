@@ -13,6 +13,7 @@ config_version=5
 config/name="Local Multiplayer Game"
 run/main_scene="uid://cvxvsj7flm3en"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0.54901963, 0.8352941, 0.88235295, 1)
 
 [autoload]
 
@@ -117,3 +118,6 @@ M={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.54901963, 0.8352941, 0.88235295, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

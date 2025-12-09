@@ -40,16 +40,17 @@ layer = -1
 follow_viewport_enabled = true
 
 [node name="ParallaxLayer" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
-scroll_scale = Vector2(0, 1)
+scroll_scale = Vector2(0, 0.5)
 repeat_size = Vector2(0, 918)
 repeat_times = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer/ParallaxLayer"]
-position = Vector2(81, -260)
+position = Vector2(81, -246)
 texture = ExtResource("2_jjvhh")
 
 [node name="ParallaxLayer2" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
 scroll_scale = Vector2(0, 0.15)
+scroll_offset = Vector2(-1, -11)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer/ParallaxLayer2"]
 position = Vector2(81, -260)
@@ -57,6 +58,7 @@ texture = ExtResource("3_ynf5e")
 
 [node name="ParallaxLayer3" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
 scroll_scale = Vector2(0, 0.2)
+scroll_offset = Vector2(-1, -17)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer/ParallaxLayer3"]
 position = Vector2(81, -260)
@@ -64,6 +66,7 @@ texture = ExtResource("4_hptm8")
 
 [node name="ParallaxLayer4" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
 scroll_scale = Vector2(0, 0.35)
+scroll_offset = Vector2(-1, -28)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer/ParallaxLayer4"]
 position = Vector2(81, -238)
@@ -71,6 +74,7 @@ texture = ExtResource("5_d1ilt")
 
 [node name="ParallaxLayer5" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
 scroll_scale = Vector2(0, 0.4)
+scroll_offset = Vector2(-1, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer/ParallaxLayer5"]
 position = Vector2(81, -260)
@@ -78,6 +82,7 @@ texture = ExtResource("6_6iyac")
 
 [node name="ParallaxLayer6" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
 scroll_scale = Vector2(0, 0.5)
+scroll_offset = Vector2(-4, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer/ParallaxLayer6"]
 position = Vector2(81, -227)
@@ -169,6 +174,67 @@ use_hdr_2d = true
 size = Vector2i(160, 180)
 render_target_update_mode = 4
 
+[node name="ParallaxCLayer" type="CanvasLayer" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="ParallaxLayer" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
+scroll_scale = Vector2(0, 1)
+scroll_offset = Vector2(-1, 0)
+repeat_size = Vector2(0, 918)
+repeat_times = 5
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer"]
+position = Vector2(81, -260)
+texture = ExtResource("2_jjvhh")
+
+[node name="ParallaxLayer2" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
+scroll_scale = Vector2(0, 0.15)
+scroll_offset = Vector2(-1, 0)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer2"]
+position = Vector2(81, -260)
+texture = ExtResource("3_ynf5e")
+
+[node name="ParallaxLayer3" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
+scroll_scale = Vector2(0, 0.2)
+scroll_offset = Vector2(-1, 0)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer3"]
+position = Vector2(81, -260)
+texture = ExtResource("4_hptm8")
+
+[node name="ParallaxLayer4" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
+visible = false
+scroll_scale = Vector2(0, 0.35)
+scroll_offset = Vector2(-1, 0)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer4"]
+position = Vector2(81, -238)
+texture = ExtResource("5_d1ilt")
+
+[node name="ParallaxLayer5" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
+scroll_scale = Vector2(0, 0.4)
+scroll_offset = Vector2(-2, 0)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer5"]
+position = Vector2(81, -260)
+texture = ExtResource("6_6iyac")
+
+[node name="ParallaxLayer6" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
+scroll_scale = Vector2(0, 0.5)
+scroll_offset = Vector2(-1, -1)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer6"]
+position = Vector2(81, -227)
+texture = ExtResource("7_fdnlq")
+
 [node name="BG_Sky1" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
 visible = false
 position = Vector2(239, -279)
@@ -224,60 +290,6 @@ visible = false
 position = Vector2(239, -279)
 texture = ExtResource("7_fdnlq")
 
-[node name="ParallaxCLayer" type="CanvasLayer" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
-layer = -1
-follow_viewport_enabled = true
-
-[node name="ParallaxLayer" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
-scroll_scale = Vector2(0, 1)
-repeat_size = Vector2(0, 918)
-repeat_times = 5
-follow_viewport = false
-
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer"]
-position = Vector2(81, -260)
-texture = ExtResource("2_jjvhh")
-
-[node name="ParallaxLayer2" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
-scroll_scale = Vector2(0, 0.15)
-follow_viewport = false
-
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer2"]
-position = Vector2(81, -260)
-texture = ExtResource("3_ynf5e")
-
-[node name="ParallaxLayer3" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
-scroll_scale = Vector2(0, 0.2)
-follow_viewport = false
-
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer3"]
-position = Vector2(81, -260)
-texture = ExtResource("4_hptm8")
-
-[node name="ParallaxLayer4" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
-scroll_scale = Vector2(0, 0.35)
-follow_viewport = false
-
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer4"]
-position = Vector2(81, -238)
-texture = ExtResource("5_d1ilt")
-
-[node name="ParallaxLayer5" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
-scroll_scale = Vector2(0, 0.4)
-follow_viewport = false
-
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer5"]
-position = Vector2(81, -260)
-texture = ExtResource("6_6iyac")
-
-[node name="ParallaxLayer6" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
-scroll_scale = Vector2(0, 0.5)
-follow_viewport = false
-
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer6"]
-position = Vector2(81, -227)
-texture = ExtResource("7_fdnlq")
-
 [node name="RightCamera2D" type="Camera2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
 unique_name_in_owner = true
 offset = Vector2(0, -40)
@@ -300,6 +312,7 @@ color = Color(0.050980393, 0.3764706, 0.07058824, 1)
 
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1"]
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform6"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform18"]
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform15"]
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform13"]
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform16"]
