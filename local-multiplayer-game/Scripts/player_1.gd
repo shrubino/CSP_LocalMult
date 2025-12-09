@@ -231,7 +231,7 @@ func _process(_delta):
 		if abs(velocity.x) > 0.1 and is_on_floor() and !is_on_wall():
 			anim.speed_scale = abs(velocity.x / 150)
 			anim.play("run")
-		elif abs(velocity.x) < 0.1 and is_on_floor() and !isStunned:
+		elif abs(velocity.x) < 0.1 and is_on_floor() and !isStunned and !tongueFiring:
 			anim.speed_scale = 1
 			anim.play("idle")
 		
@@ -240,7 +240,7 @@ func _process(_delta):
 		anim.speed_scale = 1
 		anim.play("jump")
 		
-	if velocity.y > 500 and falling:
+	if velocity.y > 700 and falling:
 		anim.speed_scale = 1
 		anim.play("falling")
 		
@@ -480,6 +480,7 @@ func _endGroundPound():
 func _fire_tongue(_direction):
 	tongueFiring = true
 	tongue.visible = true
+	anim.play("groundtongue")
 	var newTween = get_tree().create_tween()
 	# newTween.tween_property(tongue, "position", position + (velocity.normalized() * 200), 0.25)
 	# newTween.tween_property(tongue, "position", Vector2(0,0), 0.25)
