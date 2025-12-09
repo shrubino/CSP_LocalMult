@@ -1,31 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf6nlic2jww2"]
+[gd_scene load_steps=10 format=3 uid="uid://cf6nlic2jww2"]
 
-[ext_resource type="Script" uid="uid://d0fufdc60tnc5" path="res://Scripts/item.gd" id="1_76mu4"]
-[ext_resource type="Texture2D" uid="uid://cijmqgo6f48b5" path="res://Resources/Prototype/monochrome_tilemap.png" id="1_ys0gr"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_76mu4"]
-atlas = ExtResource("1_ys0gr")
-region = Rect2(0, 17, 17, 17)
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_76mu4"]
+[ext_resource type="Texture2D" uid="uid://cn45xocm6pj4i" path="res://Resources/Tiles/POWERUP (2).png" id="2_76mu4"]
+[ext_resource type="Texture2D" uid="uid://dlm1nna2en1qo" path="res://Resources/Tiles/POWERUP (3).png" id="3_u06aw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u06aw"]
-atlas = ExtResource("1_ys0gr")
-region = Rect2(17, 17, 17, 17)
+atlas = ExtResource("2_76mu4")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btogu"]
-atlas = ExtResource("1_ys0gr")
-region = Rect2(34, 17, 17, 17)
+atlas = ExtResource("2_76mu4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnst4"]
+atlas = ExtResource("3_u06aw")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_renmp"]
+atlas = ExtResource("3_u06aw")
+region = Rect2(20, 0, 20, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tnst4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_76mu4")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_u06aw")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_btogu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnst4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_renmp")
 }],
 "loop": true,
 "name": &"default",
@@ -33,6 +41,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_renmp"]
+radius = 13.0
 
 [node name="Item" type="Area2D"]
 collision_mask = 2
@@ -41,10 +50,10 @@ script = ExtResource("1_76mu4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tnst4")
 autoplay = "default"
-frame = 2
-frame_progress = 0.5381007
+frame_progress = 0.4207468
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_renmp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
