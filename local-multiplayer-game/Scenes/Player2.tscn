@@ -1,6 +1,6 @@
-[gd_scene load_steps=101 format=3 uid="uid://bksy45hcbqs35"]
+[gd_scene load_steps=96 format=3 uid="uid://bksy45hcbqs35"]
 
-[ext_resource type="Script" uid="uid://ck1liuedogadu" path="res://Scripts/player_2.gd" id="1_cgts5"]
+[ext_resource type="Script" uid="uid://cruxxjq43a8h4" path="res://Scripts/player_2.gd" id="1_cgts5"]
 [ext_resource type="Texture2D" uid="uid://demi1yg28561" path="res://Resources/Frog/Red/REDSTUN-SheetNEWANDCENTERED.png" id="2_7m8ro"]
 [ext_resource type="Texture2D" uid="uid://p8xntddf2eoh" path="res://Resources/Frog/Red/IdleRedSheet.png" id="2_kfthp"]
 [ext_resource type="Texture2D" uid="uid://cc7ial427e4d7" path="res://Resources/Frog/Jumps/RedJump_New.png" id="3_3tsci"]
@@ -641,6 +641,7 @@ animations = [{
 [node name="Player2" type="CharacterBody2D" node_paths=PackedStringArray("leftRaycast", "middleRaycast", "rightRaycast", "tongue") groups=["Player", "Player2"]]
 collision_layer = 2
 script = ExtResource("1_cgts5")
+jumpHeight = 3.0
 leftRaycast = NodePath("LeftCast")
 middleRaycast = NodePath("MiddleCast")
 rightRaycast = NodePath("RightCast")

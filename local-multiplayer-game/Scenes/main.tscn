@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://drjc2wiskis6p" path="res://Scenes/Level1.tscn" id="2_8gbba"]
 [ext_resource type="AudioStream" uid="uid://cnyf8nx1j5bmu" path="res://Audio/Pixel Burnout.mp3" id="2_hptm8"]
 [ext_resource type="Texture2D" uid="uid://cyq5amcm5ncct" path="res://Resources/NEWBACKGROUND/NEWbackgroundO.png" id="2_jjvhh"]
-[ext_resource type="Texture2D" uid="uid://belb1fcyepepe" path="res://Resources/Background/FRAME.png" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://5f848xccfx44" path="res://Resources/NEWBACKGROUND/NEWbackground1.png" id="3_ynf5e"]
 [ext_resource type="Texture2D" uid="uid://de6d8qaodh2to" path="res://Resources/NEWBACKGROUND/NEWbackground2.png" id="4_hptm8"]
 [ext_resource type="Texture2D" uid="uid://fjl83ltet76b" path="res://Resources/NEWBACKGROUND/NEWbackground3.png" id="5_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://cb5t6xngnn4uw" path="res://Resources/NEWBACKGROUND/NEWbackground4.png" id="6_6iyac"]
 [ext_resource type="Texture2D" uid="uid://phbdewo06ko1" path="res://Resources/NEWBACKGROUND/NEWbackground5.png" id="7_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://btmjioujeqfpq" path="res://Resources/NEWBACKGROUND/NEWFRAME.png" id="10_hptm8"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bo1nx")
@@ -152,11 +152,10 @@ position_smoothing_enabled = true
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/CanvasLayer"]
 position = Vector2(80, 90)
-texture = ExtResource("3_8gbba")
+texture = ExtResource("10_hptm8")
 
 [node name="RightViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -288,11 +287,10 @@ limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/CanvasLayer"]
 position = Vector2(80, 90)
-texture = ExtResource("3_8gbba")
+texture = ExtResource("10_hptm8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 160.0
@@ -301,10 +299,22 @@ offset_bottom = 180.0
 color = Color(0.050980393, 0.3764706, 0.07058824, 1)
 
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1"]
-[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/leaf platform5"]
-[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/leaf platform5/leaf platform5"]
-[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/leaf platform3"]
-[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Mushroom"]
-[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Mushroom7"]
-[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Mushroom4"]
-[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Mushroom3"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform6"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform15"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform13"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform16"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform11"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform7"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform8"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform5"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform3"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/Mushroom"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/Mushroom19"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/Mushroom16"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/Mushroom15"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/Mushroom13"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/Mushroom10"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/Mushroom8"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/Mushroom7"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/Mushroom4"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/Mushroom3"]

@@ -97,6 +97,14 @@ class_name Player2
 ##Animations must be named "latch" all lowercase as the check box says
 @export var falling: bool
 
+@export var groundstun: bool
+
+@export var airstun: bool
+
+@export var groundtongue: bool
+
+@export var airtongue: bool
+
 @export_category("Tongue Controls")
 ##Drop in an instance of the tongue, right now let's say it's a circular area2d 
 @export var tongue : Area2D
@@ -165,7 +173,6 @@ var tongueHold
 var tongueTap
 
 func _ready():
-	print(otherPlayer)
 	wasMovingR = true
 	anim = PlayerSprite
 	col = PlayerCollider
@@ -234,9 +241,15 @@ func _process(_delta):
 		anim.speed_scale = 1
 		anim.play("jump")
 		
-	if velocity.y > 40 and falling:
+	if velocity.y > 500 and falling:
 		anim.speed_scale = 1
 		anim.play("falling")
+		
+	if tongueFiring and is_on_floor():
+		print("Firing")
+		anim.play("groundtongue")
+	elif tongueFiring and !is_on_floor():
+		anim.play("airtongue")
 
 
 func _physics_process(delta):
@@ -258,7 +271,10 @@ func _physics_process(delta):
 		downTap = Input.is_action_just_pressed("Down")
 		tongueHold = Input.is_action_pressed("M")
 		tongueTap = Input.is_action_just_pressed("M")
-	
+	if isStunned and is_on_floor():
+		anim.play("groundstun")
+	elif isStunned and !is_on_floor():
+		anim.play("airstun")
 	
 	#INFO Left and Right Movement
 	
@@ -464,7 +480,7 @@ func _endGroundPound():
 	appliedTerminalVelocity = terminalVelocity
 	gravityActive = true
 
-func _fire_tongue(direction):
+func _fire_tongue(_direction):
 	tongueFiring = true
 	tongue.visible = true
 	var newTween = get_tree().create_tween()
@@ -482,6 +498,7 @@ func _fire_tongue(direction):
 
 #this just checks whether the tongue has hit something
 func _on_tongue_body_entered(body: Node2D) -> void:
+	print(body)
 	if tongueFiring:
 		if body == otherPlayer and canStick:
 			canStick = false

@@ -97,6 +97,14 @@ class_name Player1
 ##Animations must be named "latch" all lowercase as the check box says
 @export var falling: bool
 
+@export var groundstun: bool
+
+@export var airstun: bool
+
+@export var groundtongue: bool
+
+@export var airtongue: bool
+
 @export_category("Tongue Controls")
 ##Drop in an instance of the tongue, right now let's say it's a circular area2d 
 @export var tongue : Area2D
@@ -168,7 +176,6 @@ func _ready():
 	wasMovingR = true
 	anim = PlayerSprite
 	col = PlayerCollider
-	
 	_updateData()
 	
 func _updateData():
@@ -224,7 +231,7 @@ func _process(_delta):
 		if abs(velocity.x) > 0.1 and is_on_floor() and !is_on_wall():
 			anim.speed_scale = abs(velocity.x / 150)
 			anim.play("run")
-		elif abs(velocity.x) < 0.1 and is_on_floor():
+		elif abs(velocity.x) < 0.1 and is_on_floor() and !isStunned:
 			anim.speed_scale = 1
 			anim.play("idle")
 		
@@ -233,11 +240,16 @@ func _process(_delta):
 		anim.speed_scale = 1
 		anim.play("jump")
 		
-	if velocity.y > 40 and falling:
+	if velocity.y > 500 and falling:
 		anim.speed_scale = 1
 		anim.play("falling")
-
-
+		
+	if tongueFiring and is_on_floor():
+		print("Firing")
+		anim.play("groundtongue")
+	elif tongueFiring and !is_on_floor():
+		anim.play("airtongue")
+		
 func _physics_process(delta):
 	if !dset:
 		gdelta = delta
@@ -257,8 +269,10 @@ func _physics_process(delta):
 		downTap = Input.is_action_just_pressed("S")
 		tongueHold = Input.is_action_pressed("V")
 		tongueTap = Input.is_action_just_pressed("V")
-	
-	
+	if isStunned and is_on_floor():
+		anim.play("groundstun")
+	elif isStunned and !is_on_floor():
+		anim.play("airstun")
 	#INFO Left and Right Movement
 	
 	if rightHold and leftHold and movementInputMonitoring:
@@ -463,7 +477,7 @@ func _endGroundPound():
 	appliedTerminalVelocity = terminalVelocity
 	gravityActive = true
 
-func _fire_tongue(direction):
+func _fire_tongue(_direction):
 	tongueFiring = true
 	tongue.visible = true
 	var newTween = get_tree().create_tween()
@@ -511,8 +525,6 @@ func _getStunned(time):
 func pullToObject(body):
 	if tongueFiring and body is not TileMapLayer:
 		var pullTween = get_tree().create_tween()
-		print(global_position)
-		print(body.position)
 		pullTween.tween_property(self, "position", body.position + Vector2(8, -14), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 		pullTween.play()
 	return
