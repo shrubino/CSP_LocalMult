@@ -544,8 +544,8 @@ func _getStunned(time):
 
 func pullToObject(body):
 	if tongueFiring and body is not TileMapLayer and !body.is_in_group("WorldBoundaries"):
-		print(body)
-		var pullTween = get_tree().create_tween()
-		pullTween.tween_property(self, "position", body.position + Vector2(8, -25), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-		pullTween.play()
+		if (body.position - position).length() < 200:
+			var pullTween = get_tree().create_tween()
+			pullTween.tween_property(self, "position", body.position + Vector2(8, -25), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+			pullTween.play()
 	return

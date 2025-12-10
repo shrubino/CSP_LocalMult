@@ -12,6 +12,7 @@ extends Area2D
 @onready var p1_dist_lbl: Label = get_tree().get_first_node_in_group("p1_distance")
 @onready var p2_dist_lbl: Label = get_tree().get_first_node_in_group("p2_distance")
 
+@onready var winSound = get_tree().get_first_node_in_group("Winsound")
 
 var player1_win := false
 var player2_win := false
@@ -32,7 +33,7 @@ func _on_body_entered(body: Node2D) -> void:
 		player2_win = true
 	else:
 		return
-
+	winSound.play()
 	game_ended = true
 	_show_end_screen(win_text)
 

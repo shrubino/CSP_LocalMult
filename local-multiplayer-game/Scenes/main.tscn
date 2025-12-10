@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cvxvsj7flm3en"]
+[gd_scene load_steps=35 format=3 uid="uid://cvxvsj7flm3en"]
 
 [ext_resource type="Script" uid="uid://ccwww0b6y12um" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://drjc2wiskis6p" path="res://Scenes/Level1.tscn" id="2_8gbba"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cadhc0fwhiqoh" path="res://Resources/WIN/red_win_spritesheet.png" id="12_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://cxhg2yxt73grs" path="res://Resources/WIN/blue_win_spritesheet.png" id="12_wsu2k"]
 [ext_resource type="FontFile" uid="uid://bv5j3x38win15" path="res://Resources/04B_30__.TTF" id="14_k12tt"]
+[ext_resource type="AudioStream" uid="uid://dai6tkn8vjyr4" path="res://Audio/Win.mp3" id="15_h1bgf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fevyy"]
 atlas = ExtResource("11_fdnlq")
@@ -114,6 +115,7 @@ script = ExtResource("1_bo1nx")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_hptm8")
+autoplay = true
 parameters/looping = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -471,6 +473,9 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_h1bgf")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_fevyy")
 text = "Quit"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="HBoxContainer/CanvasLayer/WinPanel" groups=["Winsound"]]
+stream = ExtResource("15_h1bgf")
+
 [node name="Player1DistanceLabel" type="Label" parent="HBoxContainer/CanvasLayer" groups=["p1_distance"]]
 offset_left = 34.0
 offset_top = 3.0
@@ -495,7 +500,19 @@ texture = ExtResource("11_6iyac")
 
 [node name="doublejumpicon" type="Sprite2D" parent="." groups=["doublejump"]]
 visible = false
-position = Vector2(17.079998, 160.08)
+position = Vector2(143, 161)
+scale = Vector2(0.9149998, 0.9149998)
+texture = ExtResource("12_fdnlq")
+
+[node name="superjumpicon2" type="Sprite2D" parent="." groups=["superjump2"]]
+visible = false
+position = Vector2(305, 160)
+scale = Vector2(0.9149998, 0.9149998)
+texture = ExtResource("11_6iyac")
+
+[node name="doublejumpicon2" type="Sprite2D" parent="." groups=["doublejump2"]]
+visible = false
+position = Vector2(187, 161)
 scale = Vector2(0.9149998, 0.9149998)
 texture = ExtResource("12_fdnlq")
 

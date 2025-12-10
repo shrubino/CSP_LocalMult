@@ -64,14 +64,14 @@ func _on_body_entered(body: Node2D) -> void:
 				body._updateData()
 				var icon = get_tree().get_first_node_in_group("doublejump2")
 				sprite.visible = false
-				#icon.visible = true # aint workin!
+				icon.visible = true # aint workin!
 
 				await get_tree().create_timer(duration).timeout
 
 				# 恢复原始 jumps
 				body.jumps = original_jumps
 				body._updateData()
-				#icon.visible = false # THIS JUST aint working yet!
+				icon.visible = false # THIS JUST aint working yet!
 
 	print("Item Collected: ", itemType)
 	queue_free()
