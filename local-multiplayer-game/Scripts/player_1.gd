@@ -122,6 +122,11 @@ class_name Player1
 
 @onready var isStunned := false
 @onready var timer := 1.4
+
+@onready var jump1 = preload("res://Audio/jump1.mp3")
+@onready var jump2 = preload("res://Audio/jump2.mp3")
+@onready var jump3 = preload("res://Audio/jump3.mp3")
+
 #Variables determined by the developer set ones.
 var appliedGravity: float
 var appliedTerminalVelocity: float
@@ -249,6 +254,10 @@ func _process(_delta):
 	elif tongueFiring and !is_on_floor():
 		anim.play("airtongue")
 		
+	queue_redraw()
+func _draw():
+	draw_line(PlayerSprite.position, tongue.position, Color.INDIAN_RED, 3)
+
 func _physics_process(delta):
 	if !dset:
 		gdelta = delta
@@ -427,6 +436,17 @@ func _coyoteTime():
 
 	
 func _jump():
+	var jumpnoise = randi_range(0,2)
+	if jumpnoise == 0:
+		SoundEffects.stream = jump1
+		SoundEffects.play()
+	if jumpnoise == 1:
+		SoundEffects.stream = jump2
+		SoundEffects.play()
+	if jumpnoise == 2:
+		SoundEffects.stream = jump3
+		SoundEffects.play()
+
 	if jumpCount > 0:
 		velocity.y = -jumpMagnitude
 		jumpCount += -1

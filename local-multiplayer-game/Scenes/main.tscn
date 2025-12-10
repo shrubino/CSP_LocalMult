@@ -130,10 +130,8 @@ render_target_update_mode = 4
 layer = -1
 follow_viewport_enabled = true
 
-[node name="ParallaxLayer" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
-scroll_scale = Vector2(0, 0.5)
-repeat_size = Vector2(0, 918)
-repeat_times = 5
+[node name="ParallaxLayer" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
+position = Vector2(-1, 95)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer/ParallaxLayer"]
 position = Vector2(81, -246)
@@ -141,7 +139,7 @@ texture = ExtResource("2_jjvhh")
 
 [node name="ParallaxLayer2" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
 scroll_scale = Vector2(0, 0.15)
-scroll_offset = Vector2(-1, -11)
+scroll_offset = Vector2(-1, 83)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer/ParallaxLayer2"]
 position = Vector2(81, -260)
@@ -149,7 +147,7 @@ texture = ExtResource("3_ynf5e")
 
 [node name="ParallaxLayer3" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
 scroll_scale = Vector2(0, 0.2)
-scroll_offset = Vector2(-1, -17)
+scroll_offset = Vector2(-1, 35)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer/ParallaxLayer3"]
 position = Vector2(81, -260)
@@ -157,7 +155,7 @@ texture = ExtResource("4_hptm8")
 
 [node name="ParallaxLayer4" type="Parallax2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer"]
 scroll_scale = Vector2(0, 0.35)
-scroll_offset = Vector2(-1, -28)
+scroll_offset = Vector2(-1, -10)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/ParallaxCLayer/ParallaxLayer4"]
 position = Vector2(81, -238)
@@ -269,12 +267,8 @@ render_target_update_mode = 4
 layer = -1
 follow_viewport_enabled = true
 
-[node name="ParallaxLayer" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
-scroll_scale = Vector2(0, 1)
-scroll_offset = Vector2(-1, 0)
-repeat_size = Vector2(0, 918)
-repeat_times = 5
-follow_viewport = false
+[node name="ParallaxLayer" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
+position = Vector2(-1, 93)
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer"]
 position = Vector2(81, -260)
@@ -282,11 +276,11 @@ texture = ExtResource("2_jjvhh")
 
 [node name="ParallaxLayer2" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
 scroll_scale = Vector2(0, 0.15)
-scroll_offset = Vector2(-1, 0)
+scroll_offset = Vector2(-1, 50)
 follow_viewport = false
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer2"]
-position = Vector2(81, -260)
+position = Vector2(81, -238)
 texture = ExtResource("3_ynf5e")
 
 [node name="ParallaxLayer3" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
@@ -295,11 +289,10 @@ scroll_offset = Vector2(-1, 0)
 follow_viewport = false
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer/ParallaxLayer3"]
-position = Vector2(81, -260)
+position = Vector2(81, -220)
 texture = ExtResource("4_hptm8")
 
 [node name="ParallaxLayer4" type="Parallax2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/ParallaxCLayer"]
-visible = false
 scroll_scale = Vector2(0, 0.35)
 scroll_offset = Vector2(-1, 0)
 follow_viewport = false
@@ -399,6 +392,7 @@ texture = ExtResource("10_hptm8")
 layout_mode = 2
 color = Color(0.050980393, 0.3764706, 0.07058824, 1)
 
+
 [node name="WinBG" type="AnimatedSprite2D" parent="HBoxContainer" groups=["win_bg"]]
 process_mode = 3
 process_priority = 1
@@ -485,16 +479,17 @@ offset_bottom = 26.0
 theme_override_fonts/font = ExtResource("14_k12tt")
 text = "400m"
 
+
 [node name="superjumpicon" type="Sprite2D" parent="." groups=["superjump"]]
 visible = false
-position = Vector2(20, 159)
-scale = Vector2(0.87499994, 0.87499994)
+position = Vector2(17.079998, 160.08)
+scale = Vector2(0.9149998, 0.9149998)
 texture = ExtResource("11_6iyac")
 
 [node name="doublejumpicon" type="Sprite2D" parent="." groups=["doublejump"]]
 visible = false
-position = Vector2(20, 159)
-scale = Vector2(0.87499994, 0.87499994)
+position = Vector2(17.079998, 160.08)
+scale = Vector2(0.9149998, 0.9149998)
 texture = ExtResource("12_fdnlq")
 
 [connection signal="pressed" from="HBoxContainer/CanvasLayer/WinPanel/RestartButton" to="." method="_on_restart_button_pressed"]
