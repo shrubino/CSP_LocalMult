@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Local Multiplayer Game"
-run/main_scene="uid://cvxvsj7flm3en"
+run/main_scene="uid://v8wiy0gfh4y7"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.54901963, 0.8352941, 0.88235295, 1)
 

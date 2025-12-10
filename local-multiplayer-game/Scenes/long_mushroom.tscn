@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b280w46dp8xsh"]
+
+[ext_resource type="Texture2D" uid="uid://3slxsl1aibea" path="res://Resources/Tiles/IMG_1378.PNG" id="1_nnq2f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v5e5"]
+size = Vector2(45, 13)
+
+[node name="LongMushroom" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nnq2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -8.5)
+shape = SubResource("RectangleShape2D_5v5e5")
+one_way_collision = true

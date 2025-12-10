@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://v8wiy0gfh4y7"]
+
+[ext_resource type="Script" uid="uid://cvh0m55wbemcb" path="res://Scripts/title_screen.gd" id="1_4gxqj"]
+[ext_resource type="Texture2D" uid="uid://eo7t7tqy5dmr" path="res://Resources/title.png" id="1_klylv"]
+[ext_resource type="FontFile" uid="uid://bv5j3x38win15" path="res://Resources/04B_30__.TTF" id="2_p3fck"]
+
+[node name="TitleScreen" type="Node2D"]
+position = Vector2(160, 90)
+script = ExtResource("1_4gxqj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_klylv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -137.0
+offset_top = -73.0
+offset_right = 67.0
+offset_bottom = -39.0
+theme_override_colors/font_color = Color(0.54901963, 0.8352941, 0.88235295, 1)
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 34
+text = "CanHopy!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -152.0
+offset_top = 66.0
+offset_right = 148.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0.54901963, 0.8352941, 0.88235295, 1)
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 17
+text = "Press C or N to start"
+metadata/_edit_use_anchors_ = true

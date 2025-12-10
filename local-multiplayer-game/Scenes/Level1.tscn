@@ -15,10 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://b3d8mwqwwqlqe" path="res://Resources/Tiles/IMG_1382.PNG" id="9_yji5v"]
 [ext_resource type="PackedScene" uid="uid://btwwcxhsmo6km" path="res://Scenes/dragon_fly.tscn" id="11_2h8qs"]
 [ext_resource type="PackedScene" uid="uid://cwls1y4eehxsq" path="res://Scenes/end.tscn" id="13_6jj8j"]
-[ext_resource type="PackedScene" uid="uid://dh6bypi4n4ll3" path="res://item2.tscn" id="13_q1ws5"]
+[ext_resource type="PackedScene" uid="uid://dh6bypi4n4ll3" path="res://Scenes/item2.tscn" id="13_q1ws5"]
 [ext_resource type="Texture2D" uid="uid://dft7xg2cni7a5" path="res://Resources/Tiles/STARTLEDGE (1).png" id="14_jgorv"]
-[ext_resource type="PackedScene" uid="uid://c7n545fkqnejb" path="res://leaf_platform.tscn" id="15_0wsr5"]
-[ext_resource type="PackedScene" uid="uid://b280w46dp8xsh" path="res://long_mushroom.tscn" id="16_ulvkb"]
+[ext_resource type="PackedScene" uid="uid://c7n545fkqnejb" path="res://Scenes/leaf_platform.tscn" id="15_0wsr5"]
+[ext_resource type="PackedScene" uid="uid://b280w46dp8xsh" path="res://Scenes/long_mushroom.tscn" id="16_ulvkb"]
 [ext_resource type="PackedScene" uid="uid://rychtrincpob" path="res://Scenes/spider.tscn" id="16_yji5v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jghel"]

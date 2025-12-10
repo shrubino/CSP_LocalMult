@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cvxvsj7flm3en"]
+[gd_scene load_steps=34 format=3 uid="uid://cvxvsj7flm3en"]
 
 [ext_resource type="Script" uid="uid://ccwww0b6y12um" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://drjc2wiskis6p" path="res://Scenes/Level1.tscn" id="2_8gbba"]
@@ -101,7 +101,13 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3802"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hibaj"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1bgf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fevyy"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bo1nx")
@@ -449,6 +455,8 @@ offset_bottom = 132.0
 theme_override_colors/font_color = Color(0, 0.7058824, 0.043137256, 1)
 theme_override_fonts/font = ExtResource("14_k12tt")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_k12tt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_b3802")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_hibaj")
 text = "Restart"
 
 [node name="QuitButton" type="Button" parent="HBoxContainer/CanvasLayer/WinPanel"]
@@ -460,6 +468,7 @@ offset_bottom = 166.0
 theme_override_colors/font_color = Color(0, 0.7058824, 0.043137256, 1)
 theme_override_fonts/font = ExtResource("14_k12tt")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_h1bgf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fevyy")
 text = "Quit"
 
 [node name="Player1DistanceLabel" type="Label" parent="HBoxContainer/CanvasLayer" groups=["p1_distance"]]
