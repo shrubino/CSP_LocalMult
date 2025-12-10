@@ -8,7 +8,10 @@ enum ItemType {
 @export var itemType: ItemType
 @export var jumpMultiplier = 1.5
 
+	
+
 func _on_body_entered(body: Node2D) -> void:
+	var sprite = $AnimatedSprite2D
 	if body is Player1 or body is Player2:
 		match itemType:
 			#Super Jump function, 1.5 * jump height
@@ -16,6 +19,7 @@ func _on_body_entered(body: Node2D) -> void:
 				body.jumpHeight *= jumpMultiplier
 				body._updateData()
 				var icon = get_tree().get_first_node_in_group("superjump")
+				sprite.visible = false
 				icon.visible = true
 				await get_tree().create_timer(2).timeout
 				icon.visible = false
@@ -24,6 +28,7 @@ func _on_body_entered(body: Node2D) -> void:
 				body.jumps +=1
 				body._updateData()
 				var icon = get_tree().get_first_node_in_group("doublejump")
+				sprite.visible = false
 				icon.visible = true
 				await get_tree().create_timer(2).timeout
 				icon.visible = false
