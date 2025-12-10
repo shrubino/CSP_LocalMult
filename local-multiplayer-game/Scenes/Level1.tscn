@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=40 format=4 uid="uid://drjc2wiskis6p"]
-
+[gd_scene load_steps=34 format=4 uid="uid://drjc2wiskis6p"]
 
 [ext_resource type="Texture2D" uid="uid://cwra40fds0cwo" path="res://Resources/spritesheet.png" id="1_joc8x"]
 [ext_resource type="PackedScene" uid="uid://bro3dprem6cm0" path="res://Scenes/Player1.tscn" id="2_6l7je"]
@@ -21,10 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dft7xg2cni7a5" path="res://Resources/Tiles/STARTLEDGE (1).png" id="14_jgorv"]
 [ext_resource type="PackedScene" uid="uid://c7n545fkqnejb" path="res://leaf_platform.tscn" id="15_0wsr5"]
 [ext_resource type="PackedScene" uid="uid://b280w46dp8xsh" path="res://long_mushroom.tscn" id="16_ulvkb"]
-
-[ext_resource type="PackedScene" path="res://Scenes/spider.tscn" id="16_yji5v"]
-[ext_resource type="Texture2D" uid="uid://nbsht8i7juqg" path="res://Resources/Tiles/IMG_1387.PNG" id="20_yji5v"]
-[ext_resource type="PackedScene" uid="uid://cala1j1bwlg8k" path="res://crumble_platform.tscn" id="22_fh0sh"]
+[ext_resource type="PackedScene" uid="uid://rychtrincpob" path="res://Scenes/spider.tscn" id="16_yji5v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jghel"]
 texture = ExtResource("1_joc8x")
@@ -199,43 +194,6 @@ sources/8 = SubResource("TileSetAtlasSource_o0dvq")
 sources/9 = SubResource("TileSetAtlasSource_1nrjw")
 sources/10 = SubResource("TileSetAtlasSource_ulvkb")
 
-[sub_resource type="Animation" id="Animation_6ll4n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(53, -242)]
-}
-
-[sub_resource type="Animation" id="Animation_ysn8j"]
-resource_name = "move"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(209, -2063), Vector2(320, -2063)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kylad"]
-_data = {
-&"RESET": SubResource("Animation_6ll4n"),
-&"move": SubResource("Animation_ysn8j")
-}
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ysn8j"]
 distance = 7.0
 
@@ -300,70 +258,28 @@ jumpMultiplier = 1.25
 [node name="DragonFlies" type="Node" parent="."]
 
 [node name="DragonFly_1" parent="DragonFlies" instance=ExtResource("11_2h8qs")]
-position = Vector2(233, -475)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DragonFlies/DragonFly_1"]
-libraries = {
-&"": SubResource("AnimationLibrary_kylad")
-}
-autoplay = "move"
+position = Vector2(84, -287)
 
 [node name="DragonFly_2" parent="DragonFlies" instance=ExtResource("11_2h8qs")]
-z_index = 1
-position = Vector2(143, -218)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DragonFlies/DragonFly_2"]
-libraries = {
-&"": SubResource("AnimationLibrary_kylad")
-}
-autoplay = "move"
+position = Vector2(283, -525)
 
 [node name="DragonFly_3" parent="DragonFlies" instance=ExtResource("11_2h8qs")]
-position = Vector2(-420, -534)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DragonFlies/DragonFly_3"]
-libraries = {
-&"": SubResource("AnimationLibrary_kylad")
-}
-autoplay = "move"
-
-[node name="DragonFly_7" parent="DragonFlies" instance=ExtResource("11_2h8qs")]
-position = Vector2(247, -826)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DragonFlies/DragonFly_7"]
-root_node = NodePath("../../DragonFly_7")
-libraries = {
-&"": SubResource("AnimationLibrary_kylad")
-}
-autoplay = "move"
+position = Vector2(68, -658)
 
 [node name="DragonFly_4" parent="DragonFlies" instance=ExtResource("11_2h8qs")]
-position = Vector2(305, -990)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DragonFlies/DragonFly_4"]
-libraries = {
-&"": SubResource("AnimationLibrary_kylad")
-}
-autoplay = "move"
+position = Vector2(134, -934)
 
 [node name="DragonFly_5" parent="DragonFlies" instance=ExtResource("11_2h8qs")]
-z_index = 1
-position = Vector2(109, -1490)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DragonFlies/DragonFly_5"]
-libraries = {
-&"": SubResource("AnimationLibrary_kylad")
-}
-autoplay = "move"
+position = Vector2(344, -1183)
 
 [node name="DragonFly_6" parent="DragonFlies" instance=ExtResource("11_2h8qs")]
-position = Vector2(53, -242)
+position = Vector2(4, -1308)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DragonFlies/DragonFly_6"]
-libraries = {
-&"": SubResource("AnimationLibrary_kylad")
-}
-autoplay = "move"
+[node name="DragonFly_7" parent="DragonFlies" instance=ExtResource("11_2h8qs")]
+position = Vector2(351, -1867)
+
+[node name="DragonFly_8" parent="DragonFlies" instance=ExtResource("11_2h8qs")]
+position = Vector2(37, -2222)
 
 [node name="WorldBoundries" type="Node" parent="." groups=["WorldBoundaries"]]
 
@@ -397,8 +313,31 @@ position = Vector2(17.999992, 178)
 rotation = 1.5707964
 texture = ExtResource("14_jgorv")
 
-[node name="Spider" parent="." instance=ExtResource("16_yji5v")]
-position = Vector2(164, 101)
+[node name="Spiders" type="Node" parent="."]
+
+[node name="Spider" parent="Spiders" instance=ExtResource("16_yji5v")]
+position = Vector2(175, -12)
+
+[node name="Spider2" parent="Spiders" instance=ExtResource("16_yji5v")]
+position = Vector2(127, -345)
+
+[node name="Spider3" parent="Spiders" instance=ExtResource("16_yji5v")]
+position = Vector2(181, -624)
+
+[node name="Spider4" parent="Spiders" instance=ExtResource("16_yji5v")]
+position = Vector2(151, -1047)
+
+[node name="Spider5" parent="Spiders" instance=ExtResource("16_yji5v")]
+position = Vector2(100, -1280)
+
+[node name="Spider6" parent="Spiders" instance=ExtResource("16_yji5v")]
+position = Vector2(141, -1747)
+
+[node name="Spider7" parent="Spiders" instance=ExtResource("16_yji5v")]
+position = Vector2(210, -2083)
+
+[node name="Spider8" parent="Spiders" instance=ExtResource("16_yji5v")]
+position = Vector2(136, -2313)
 
 [node name="End" parent="." instance=ExtResource("13_6jj8j")]
 position = Vector2(172, -2422)
@@ -627,7 +566,6 @@ position = Vector2(197, -281)
 
 [node name="LongMushroom2" parent="Plaforms" instance=ExtResource("16_ulvkb")]
 position = Vector2(183, -63)
-
 
 [editable path="Plaforms/leaf platform6"]
 [editable path="Plaforms/leaf platform18"]

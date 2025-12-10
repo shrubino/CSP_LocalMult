@@ -44,7 +44,7 @@ func _on_body_entered(body: Node2D) -> void:
 				var icon = get_tree().get_first_node_in_group("doublejump")
 				sprite.visible = false
 				icon.visible = true
-				await get_tree().create_timer(2).timeout
+				await get_tree().create_timer(5).timeout
 				icon.visible = false
 	if body is Player2:
 		match itemType:
@@ -55,10 +55,11 @@ func _on_body_entered(body: Node2D) -> void:
 				var icon = get_tree().get_first_node_in_group("superjump2")
 				sprite.visible = false
 				icon.visible = true
-				await get_tree().create_timer(2).timeout
+				await get_tree().create_timer(5).timeout
 				icon.visible = false
 			#Double Jump function(Jump not working yet)
 			ItemType.DoubleJump:
+				var original_jumps :int= body.jumps
 				body.jumps +=1
 				body._updateData()
 				var icon = get_tree().get_first_node_in_group("doublejump2")

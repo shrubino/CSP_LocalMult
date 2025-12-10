@@ -22,7 +22,8 @@ extends Node
 @onready var p1_dist_lbl = $HBoxContainer/CanvasLayer/Player1DistanceLabel
 @onready var p2_dist_lbl = $HBoxContainer/CanvasLayer/Player2DistanceLabel
 
-const PIXELS_PER_METER := 16.0
+# calculate from pixels to meters
+const PIXELS_PER_METER := 5.0
 
 func _ready() -> void:
 	players[1].sub_viewport.world_2d = players[0].sub_viewport.world_2d
