@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=40 format=4 uid="uid://drjc2wiskis6p"]
+
 
 [ext_resource type="Texture2D" uid="uid://cwra40fds0cwo" path="res://Resources/spritesheet.png" id="1_joc8x"]
 [ext_resource type="PackedScene" uid="uid://bro3dprem6cm0" path="res://Scenes/Player1.tscn" id="2_6l7je"]
@@ -19,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dft7xg2cni7a5" path="res://Resources/Tiles/STARTLEDGE (1).png" id="14_jgorv"]
 [ext_resource type="PackedScene" uid="uid://c7n545fkqnejb" path="res://leaf_platform.tscn" id="15_0wsr5"]
 [ext_resource type="PackedScene" uid="uid://b280w46dp8xsh" path="res://long_mushroom.tscn" id="16_ulvkb"]
+
 [ext_resource type="PackedScene" path="res://Scenes/spider.tscn" id="16_yji5v"]
 [ext_resource type="Texture2D" uid="uid://nbsht8i7juqg" path="res://Resources/Tiles/IMG_1387.PNG" id="20_yji5v"]
 [ext_resource type="PackedScene" uid="uid://cala1j1bwlg8k" path="res://crumble_platform.tscn" id="22_fh0sh"]
@@ -236,9 +239,6 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ysn8j"]
 distance = 7.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh0sh"]
-size = Vector2(311, 28)
-
 [node name="Level1" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [125.0]
 
@@ -296,36 +296,6 @@ jumpMultiplier = 1.25
 [node name="Item3" parent="Items" instance=ExtResource("13_q1ws5")]
 position = Vector2(156, -948)
 jumpMultiplier = 1.25
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="WinPanel" type="Panel" parent="CanvasLayer"]
-process_mode = 2
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="WinLabel" type="Label" parent="CanvasLayer/WinPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Win"
-horizontal_alignment = 1
-
-[node name="RestartButton" type="Button" parent="CanvasLayer/WinPanel"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 22.0
-offset_right = 23.0
-offset_bottom = 30.0
-text = "Restart"
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/WinPanel"]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 56.0
-offset_right = 68.0
-offset_bottom = 87.0
-text = "Quit"
 
 [node name="DragonFlies" type="Node" parent="."]
 
@@ -427,14 +397,13 @@ position = Vector2(17.999992, 178)
 rotation = 1.5707964
 texture = ExtResource("14_jgorv")
 
-[node name="Spider" parent="WorldBoundries" instance=ExtResource("16_yji5v")]
+[node name="Spider" parent="." instance=ExtResource("16_yji5v")]
 position = Vector2(164, 101)
 
-[node name="End" parent="." node_paths=PackedStringArray("win_panel", "win_label") instance=ExtResource("13_6jj8j")]
-visible = false
-position = Vector2(148, -86)
-win_panel = NodePath("../CanvasLayer/WinPanel")
-win_label = NodePath("../CanvasLayer/WinPanel/WinLabel")
+[node name="End" parent="." instance=ExtResource("13_6jj8j")]
+position = Vector2(172, -2422)
+collision_layer = 3
+collision_mask = 3
 
 [node name="Plaforms" type="Node" parent="."]
 
@@ -469,6 +438,12 @@ flip_h = true
 position = Vector2(142, -1871)
 
 [node name="Sprite2D" parent="Plaforms/leaf platform18" index="0"]
+flip_h = true
+
+[node name="leaf platform19" parent="Plaforms" instance=ExtResource("15_0wsr5")]
+position = Vector2(326, -2043)
+
+[node name="Sprite2D" parent="Plaforms/leaf platform19" index="0"]
 flip_h = true
 
 [node name="leaf platform15" parent="Plaforms" instance=ExtResource("15_0wsr5")]
@@ -617,6 +592,15 @@ position = Vector2(163, 33)
 [node name="LongMushroom11" parent="Plaforms" instance=ExtResource("16_ulvkb")]
 position = Vector2(200, -1964)
 
+[node name="LongMushroom12" parent="Plaforms" instance=ExtResource("16_ulvkb")]
+position = Vector2(187, -2127)
+
+[node name="LongMushroom13" parent="Plaforms" instance=ExtResource("16_ulvkb")]
+position = Vector2(207, -2257)
+
+[node name="LongMushroom14" parent="Plaforms" instance=ExtResource("16_ulvkb")]
+position = Vector2(151, -2344)
+
 [node name="LongMushroom9" parent="Plaforms" instance=ExtResource("16_ulvkb")]
 position = Vector2(149, -1668)
 
@@ -644,31 +628,10 @@ position = Vector2(197, -281)
 [node name="LongMushroom2" parent="Plaforms" instance=ExtResource("16_ulvkb")]
 position = Vector2(183, -63)
 
-[node name="Node2D" type="StaticBody2D" parent="."]
-position = Vector2(178, -2407)
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("14_jgorv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
-position = Vector2(-0.5, 12)
-shape = SubResource("RectangleShape2D_fh0sh")
-one_way_collision = true
-
-[node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
-position = Vector2(77, 79)
-texture = ExtResource("20_yji5v")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
-position = Vector2(-77, 79)
-texture = ExtResource("20_yji5v")
-
-[node name="CrumblePlatform" parent="." instance=ExtResource("22_fh0sh")]
-visible = false
-position = Vector2(126, 59)
 
 [editable path="Plaforms/leaf platform6"]
 [editable path="Plaforms/leaf platform18"]
+[editable path="Plaforms/leaf platform19"]
 [editable path="Plaforms/leaf platform15"]
 [editable path="Plaforms/leaf platform13"]
 [editable path="Plaforms/leaf platform16"]

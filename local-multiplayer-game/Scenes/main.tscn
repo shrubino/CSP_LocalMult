@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvxvsj7flm3en"]
+[gd_scene load_steps=31 format=3 uid="uid://cvxvsj7flm3en"]
 
 [ext_resource type="Script" uid="uid://ccwww0b6y12um" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://drjc2wiskis6p" path="res://Scenes/Level1.tscn" id="2_8gbba"]
@@ -11,7 +11,97 @@
 [ext_resource type="Texture2D" uid="uid://phbdewo06ko1" path="res://Resources/NEWBACKGROUND/NEWbackground5.png" id="7_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://btmjioujeqfpq" path="res://Resources/NEWBACKGROUND/NEWFRAME.png" id="10_hptm8"]
 [ext_resource type="Texture2D" uid="uid://bepr1slqp1dgx" path="res://Resources/Tiles/IMG_1392 (1).PNG" id="11_6iyac"]
+[ext_resource type="Texture2D" uid="uid://ck0vntvbnt0j6" path="res://Resources/WIN/WinBG.png" id="11_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://dp4dci1jtx80g" path="res://Resources/IMG_1391 (2).PNG" id="12_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://cadhc0fwhiqoh" path="res://Resources/WIN/red_win_spritesheet.png" id="12_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://cxhg2yxt73grs" path="res://Resources/WIN/blue_win_spritesheet.png" id="12_wsu2k"]
+[ext_resource type="FontFile" uid="uid://bv5j3x38win15" path="res://Resources/04B_30__.TTF" id="14_k12tt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fevyy"]
+atlas = ExtResource("11_fdnlq")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hibaj"]
+atlas = ExtResource("11_fdnlq")
+region = Rect2(320, 0, 320, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pdsj5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fevyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hibaj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdnlq"]
+atlas = ExtResource("12_wsu2k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkdf5"]
+atlas = ExtResource("12_wsu2k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsu2k"]
+atlas = ExtResource("12_wsu2k")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k12tt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdnlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkdf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsu2k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k12tt"]
+atlas = ExtResource("12_jkdf5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1bgf"]
+atlas = ExtResource("12_jkdf5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3802"]
+atlas = ExtResource("12_jkdf5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fevyy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k12tt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1bgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3802")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsu2k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1bgf"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bo1nx")
@@ -298,23 +388,97 @@ position_smoothing_enabled = true
 position = Vector2(80, 90)
 texture = ExtResource("10_hptm8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 160.0
-offset_right = 164.0
-offset_bottom = 180.0
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+layout_mode = 2
 color = Color(0.050980393, 0.3764706, 0.07058824, 1)
 
-[node name="superjumpicon2" type="Sprite2D" parent="." groups=["doublejump2", "superjump2"]]
-visible = false
-position = Vector2(181.25, 161.25)
-scale = Vector2(0.8981396, 0.9450628)
-texture = ExtResource("11_6iyac")
 
-[node name="doublejumpicon2" type="Sprite2D" parent="." groups=["doublejump2"]]
+[node name="WinBG" type="AnimatedSprite2D" parent="HBoxContainer" groups=["win_bg"]]
+process_mode = 3
+process_priority = 1
 visible = false
-position = Vector2(181.25, 161.25)
-scale = Vector2(0.8981396, 0.9450628)
-texture = ExtResource("12_fdnlq")
+position = Vector2(161.50003, 90)
+scale = Vector2(1.015625, 1.0111111)
+sprite_frames = SubResource("SpriteFrames_pdsj5")
+autoplay = "default"
+
+[node name="WinBlueFrog" type="AnimatedSprite2D" parent="HBoxContainer" groups=["win_bf"]]
+process_mode = 2
+process_priority = 1
+visible = false
+position = Vector2(161.776, 67.632)
+scale = Vector2(1.861, 1.852)
+sprite_frames = SubResource("SpriteFrames_k12tt")
+autoplay = "default"
+frame_progress = 0.9831135
+
+[node name="WinRedFrog" type="AnimatedSprite2D" parent="HBoxContainer" groups=["win_rf"]]
+process_mode = 2
+process_priority = 1
+visible = false
+position = Vector2(161.776, 67.632)
+scale = Vector2(1.861, 1.852)
+sprite_frames = SubResource("SpriteFrames_fevyy")
+autoplay = "default"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer"]
+
+[node name="WinPanel" type="Panel" parent="HBoxContainer/CanvasLayer" groups=["win_panel"]]
+process_mode = 2
+visible = false
+offset_right = 324.0
+offset_bottom = 180.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wsu2k")
+
+[node name="WinLabel" type="Label" parent="HBoxContainer/CanvasLayer/WinPanel"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 5.0
+offset_right = 249.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(4.379898e-06, 0.7055327, 0.04401406, 1)
+theme_override_fonts/font = ExtResource("14_k12tt")
+text = "Player 1 wins!"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="HBoxContainer/CanvasLayer/WinPanel"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 101.0
+offset_right = 209.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0, 0.7058824, 0.043137256, 1)
+theme_override_fonts/font = ExtResource("14_k12tt")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k12tt")
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="HBoxContainer/CanvasLayer/WinPanel"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 135.0
+offset_right = 187.0
+offset_bottom = 166.0
+theme_override_colors/font_color = Color(0, 0.7058824, 0.043137256, 1)
+theme_override_fonts/font = ExtResource("14_k12tt")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h1bgf")
+text = "Quit"
+
+[node name="Player1DistanceLabel" type="Label" parent="HBoxContainer/CanvasLayer" groups=["p1_distance"]]
+offset_left = 34.0
+offset_top = 3.0
+offset_right = 93.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("14_k12tt")
+text = "500m"
+
+[node name="Player2DistanceLabel" type="Label" parent="HBoxContainer/CanvasLayer" groups=["p2_distance"]]
+offset_left = 197.0
+offset_top = 3.0
+offset_right = 256.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("14_k12tt")
+text = "400m"
+
 
 [node name="superjumpicon" type="Sprite2D" parent="." groups=["superjump"]]
 visible = false
@@ -328,9 +492,13 @@ position = Vector2(17.079998, 160.08)
 scale = Vector2(0.9149998, 0.9149998)
 texture = ExtResource("12_fdnlq")
 
+[connection signal="pressed" from="HBoxContainer/CanvasLayer/WinPanel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/CanvasLayer/WinPanel/QuitButton" to="." method="_on_quit_button_pressed"]
+
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1"]
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform6"]
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform18"]
+[editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform19"]
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform15"]
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform13"]
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform16"]

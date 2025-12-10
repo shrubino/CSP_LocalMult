@@ -1,14 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwls1y4eehxsq"]
+[gd_scene load_steps=5 format=3 uid="uid://cwls1y4eehxsq"]
 
 [ext_resource type="Script" uid="uid://bsoairg5jl50" path="res://Scripts/end.gd" id="1_5j2cu"]
+[ext_resource type="Texture2D" uid="uid://dft7xg2cni7a5" path="res://Resources/Tiles/STARTLEDGE (1).png" id="2_02kpm"]
+[ext_resource type="Texture2D" uid="uid://nbsht8i7juqg" path="res://Resources/Tiles/IMG_1387.PNG" id="3_ql4ve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmt8n"]
-size = Vector2(140, 20)
+size = Vector2(313, 27)
 
 [node name="End" type="Area2D"]
 script = ExtResource("1_5j2cu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_xmt8n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_02kpm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(77, 79)
+texture = ExtResource("3_ql4ve")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-77, 79)
+texture = ExtResource("3_ql4ve")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
