@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvxvsj7flm3en"]
+[gd_scene load_steps=13 format=3 uid="uid://cvxvsj7flm3en"]
 
 [ext_resource type="Script" uid="uid://ccwww0b6y12um" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://drjc2wiskis6p" path="res://Scenes/Level1.tscn" id="2_8gbba"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cb5t6xngnn4uw" path="res://Resources/NEWBACKGROUND/NEWbackground4.png" id="6_6iyac"]
 [ext_resource type="Texture2D" uid="uid://phbdewo06ko1" path="res://Resources/NEWBACKGROUND/NEWbackground5.png" id="7_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://btmjioujeqfpq" path="res://Resources/NEWBACKGROUND/NEWFRAME.png" id="10_hptm8"]
+[ext_resource type="Texture2D" uid="uid://bepr1slqp1dgx" path="res://Resources/Tiles/IMG_1392 (1).PNG" id="11_6iyac"]
+[ext_resource type="Texture2D" uid="uid://dp4dci1jtx80g" path="res://Resources/IMG_1391 (2).PNG" id="12_fdnlq"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bo1nx")
@@ -308,6 +310,18 @@ offset_left = 160.0
 offset_right = 164.0
 offset_bottom = 180.0
 color = Color(0.050980393, 0.3764706, 0.07058824, 1)
+
+[node name="superjumpicon" type="Sprite2D" parent="." groups=["superjump"]]
+visible = false
+position = Vector2(20, 159)
+scale = Vector2(0.87499994, 0.87499994)
+texture = ExtResource("11_6iyac")
+
+[node name="doublejumpicon" type="Sprite2D" parent="." groups=["doublejump"]]
+visible = false
+position = Vector2(20, 159)
+scale = Vector2(0.87499994, 0.87499994)
+texture = ExtResource("12_fdnlq")
 
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1"]
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1/Plaforms/leaf platform6"]
