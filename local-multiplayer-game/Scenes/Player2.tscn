@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://bksy45hcbqs35"]
+[gd_scene load_steps=87 format=3 uid="uid://bksy45hcbqs35"]
 
 [ext_resource type="Script" uid="uid://cruxxjq43a8h4" path="res://Scripts/player_2.gd" id="1_cgts5"]
 [ext_resource type="Texture2D" uid="uid://demi1yg28561" path="res://Resources/Frog/Red/REDSTUN-SheetNEWANDCENTERED.png" id="2_7m8ro"]
@@ -94,29 +94,13 @@ region = Rect2(1088, 0, 64, 64)
 atlas = ExtResource("2_7m8ro")
 region = Rect2(1152, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dkf0i"]
-atlas = ExtResource("3_nfgwa")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yf0sp"]
-atlas = ExtResource("3_nfgwa")
-region = Rect2(64, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_scrvb"]
 atlas = ExtResource("3_nfgwa")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ggqf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkf0i"]
 atlas = ExtResource("3_nfgwa")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ktj88"]
-atlas = ExtResource("3_nfgwa")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_47dmo"]
-atlas = ExtResource("3_nfgwa")
-region = Rect2(320, 0, 64, 64)
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6p0i8"]
 atlas = ExtResource("3_niw6a")
@@ -222,14 +206,6 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("7_oixfn")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_siqra"]
-atlas = ExtResource("8_yp5jh")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g4d8x"]
-atlas = ExtResource("8_yp5jh")
-region = Rect2(32, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_quvyv"]
 atlas = ExtResource("8_yp5jh")
 region = Rect2(64, 0, 32, 32)
@@ -249,10 +225,6 @@ region = Rect2(160, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dfbu"]
 atlas = ExtResource("8_yp5jh")
 region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uxe60"]
-atlas = ExtResource("8_yp5jh")
-region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3tsci"]
 atlas = ExtResource("2_kfthp")
@@ -400,22 +372,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dkf0i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yf0sp")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_scrvb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3ggqf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ktj88")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_47dmo")
+"texture": SubResource("AtlasTexture_dkf0i")
 }],
 "loop": true,
 "name": &"airtongue",
@@ -572,12 +532,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_siqra")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g4d8x")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_quvyv")
 }, {
 "duration": 1.0,
@@ -591,9 +545,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1dfbu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uxe60")
 }],
 "loop": true,
 "name": &"groundtongue",
@@ -725,7 +676,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_eus2p")
-animation = &"groundstun"
+animation = &"airtongue"
 autoplay = "idle"
 
 [connection signal="body_entered" from="Tongue" to="." method="_on_tongue_body_entered"]

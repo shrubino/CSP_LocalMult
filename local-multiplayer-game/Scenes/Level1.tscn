@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dft7xg2cni7a5" path="res://Resources/Tiles/STARTLEDGE (1).png" id="14_jgorv"]
 [ext_resource type="PackedScene" uid="uid://c7n545fkqnejb" path="res://leaf_platform.tscn" id="15_0wsr5"]
 [ext_resource type="PackedScene" uid="uid://b280w46dp8xsh" path="res://long_mushroom.tscn" id="16_ulvkb"]
-[ext_resource type="PackedScene" uid="uid://rychtrincpob" path="res://Scenes/spider.tscn" id="16_yji5v"]
+[ext_resource type="PackedScene" path="res://Scenes/spider.tscn" id="16_yji5v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jghel"]
 texture = ExtResource("1_joc8x")
@@ -195,9 +195,11 @@ tile_map_data = PackedByteArray("AAD4/1f/AAADAAEAAAD4/1j/AAADAAEAAAD4/1n/AAADAAE
 tile_set = SubResource("TileSet_slnnj")
 
 [node name="Player1" parent="." instance=ExtResource("2_6l7je")]
+z_index = 2
 position = Vector2(113, 160)
 
 [node name="Player2" parent="." instance=ExtResource("3_ysn8j")]
+z_index = 2
 position = Vector2(214, 155)
 falling = false
 groundstun = false
