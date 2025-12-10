@@ -31,6 +31,12 @@ window/stretch/scale_mode="integer"
 [global_group]
 
 Player=""
+win_panel=""
+win_bg=""
+win_bf=""
+win_rf=""
+p1_distance=""
+p2_distance=""
 
 [input]
 
