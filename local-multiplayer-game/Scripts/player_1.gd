@@ -249,6 +249,10 @@ func _process(_delta):
 	elif tongueFiring and !is_on_floor():
 		anim.play("airtongue")
 		
+	queue_redraw()
+func _draw():
+	draw_line(PlayerSprite.position, tongue.position, Color.INDIAN_RED, 3)
+
 func _physics_process(delta):
 	if !dset:
 		gdelta = delta
