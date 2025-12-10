@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvxvsj7flm3en"]
+[gd_scene load_steps=11 format=3 uid="uid://cvxvsj7flm3en"]
 
 [ext_resource type="Script" uid="uid://ccwww0b6y12um" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://drjc2wiskis6p" path="res://Scenes/Level1.tscn" id="2_8gbba"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cb5t6xngnn4uw" path="res://Resources/NEWBACKGROUND/NEWbackground4.png" id="6_6iyac"]
 [ext_resource type="Texture2D" uid="uid://phbdewo06ko1" path="res://Resources/NEWBACKGROUND/NEWbackground5.png" id="7_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://btmjioujeqfpq" path="res://Resources/NEWBACKGROUND/NEWFRAME.png" id="10_hptm8"]
-[ext_resource type="Texture2D" uid="uid://d3sny4j7g7isf" path="res://Resources/Tiles/IMG_1388.PNG" id="11_d1ilt"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bo1nx")
@@ -157,15 +156,10 @@ position_smoothing_enabled = true
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport"]
-layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/CanvasLayer"]
 position = Vector2(80, 90)
 texture = ExtResource("10_hptm8")
-
-[node name="Img1388" type="Sprite2D" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport/CanvasLayer"]
-position = Vector2(26, 86)
-texture = ExtResource("11_d1ilt")
 
 [node name="RightViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -304,7 +298,6 @@ limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
-layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport/CanvasLayer"]
 position = Vector2(80, 90)
