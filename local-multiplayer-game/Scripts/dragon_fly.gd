@@ -1,18 +1,35 @@
-extends AnimatableBody2D
+extends Node2D
+@export var speed := 40
+@export var left_distance := 75
+@export var right_distance := 75
+@onready var headed_left = true
+@onready var starting_pos
 
-@onready var sprite = $AnimatedSprite2D
-@onready var timer = 0.1
-@onready var canflip = true
-var startingPoint
+@onready var marker_l = $L
+@onready var marker_l2 = $L2
+
+@onready var marker_r = $R
+@onready var marker_r2 = $R2
+
+@onready var spider = $SpiderBody
+@onready var spider_sprite = $SpiderBody/AnimatedSprite2D
 func _ready() -> void:
-	sprite.flip_h = true
-	startingPoint = global_position
+	starting_pos = global_position
+	marker_l.global_position.x = starting_pos.x - left_distance
+	marker_r.global_position.x = starting_pos.x + right_distance
+	marker_l2.global_position.x = starting_pos.x - (left_distance/3)
+	marker_r2.global_position.x = starting_pos.x + (right_distance/3)
 
-func _process(delta: float) -> void:
-	
-	if position.x < (startingPoint.x - 55) or position.x > (startingPoint.x + 55):
-		if canflip == true:
-			canflip = false
-			sprite.flip_h = not sprite.flip_h
-			await get_tree().create_timer(timer).timeout
-			canflip = true 
+
+func _physics_process(delta: float) -> void:
+	if headed_left == true:
+		spider.position.x -= speed * delta
+		spider_sprite.flip_h = true
+	elif headed_left == false: 
+		spider.position.x += speed * delta
+		spider_sprite.flip_h = false
+
+	if spider.position.x <= marker_l.position.x:
+		headed_left = false
+	if spider.position.x >= marker_r.position.x:
+		headed_left = true
