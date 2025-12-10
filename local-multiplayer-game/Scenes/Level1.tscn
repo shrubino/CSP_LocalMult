@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://drjc2wiskis6p"]
+[gd_scene load_steps=40 format=4 uid="uid://drjc2wiskis6p"]
 
 [ext_resource type="Texture2D" uid="uid://cwra40fds0cwo" path="res://Resources/spritesheet.png" id="1_joc8x"]
 [ext_resource type="PackedScene" uid="uid://bro3dprem6cm0" path="res://Scenes/Player1.tscn" id="2_6l7je"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b280w46dp8xsh" path="res://long_mushroom.tscn" id="16_ulvkb"]
 [ext_resource type="PackedScene" uid="uid://rychtrincpob" path="res://Scenes/spider.tscn" id="16_yji5v"]
 [ext_resource type="Texture2D" uid="uid://nbsht8i7juqg" path="res://Resources/Tiles/IMG_1387.PNG" id="20_yji5v"]
+[ext_resource type="PackedScene" uid="uid://cala1j1bwlg8k" path="res://crumble_platform.tscn" id="22_fh0sh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jghel"]
 texture = ExtResource("1_joc8x")
@@ -658,8 +659,9 @@ texture = ExtResource("20_yji5v")
 position = Vector2(-77, 79)
 texture = ExtResource("20_yji5v")
 
-[node name="Player1" parent="." instance=ExtResource("2_6l7je")]
-position = Vector2(122, 152)
+[node name="CrumblePlatform" parent="." instance=ExtResource("22_fh0sh")]
+visible = false
+position = Vector2(126, 59)
 
 [editable path="Plaforms/leaf platform6"]
 [editable path="Plaforms/leaf platform18"]

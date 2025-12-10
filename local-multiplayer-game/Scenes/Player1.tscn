@@ -1,6 +1,7 @@
-[gd_scene load_steps=81 format=3 uid="uid://bro3dprem6cm0"]
+[gd_scene load_steps=82 format=3 uid="uid://bro3dprem6cm0"]
 
 [ext_resource type="Script" uid="uid://cioybd2nxo0sh" path="res://Scripts/player_1.gd" id="1_n5fpy"]
+[ext_resource type="Texture2D" uid="uid://lpx3oet7el3e" path="res://Resources/tonguesprite.png" id="2_3qf5g"]
 [ext_resource type="Texture2D" uid="uid://barebckqkdehf" path="res://Resources/Frog/Blue/BLUESTUN-SheetNEWANDCENTERED.png" id="2_hjvw7"]
 [ext_resource type="Texture2D" uid="uid://bmwbp3topkeut" path="res://Resources/Frog/Blue/IdleBlueSheet.png" id="2_n5fpy"]
 [ext_resource type="Texture2D" uid="uid://wmgsef8oktq1" path="res://Resources/Frog/Jumps/BlueJump_New.png" id="3_1yta1"]
@@ -627,13 +628,8 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tongue"]
 shape = SubResource("CircleShape2D_n5fpy")
 
-[node name="ColorRect" type="ColorRect" parent="Tongue"]
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-color = Color(0.7490196, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
+[node name="Sprite2D" type="Sprite2D" parent="Tongue"]
+texture = ExtResource("2_3qf5g")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_2ale3")
