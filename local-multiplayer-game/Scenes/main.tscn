@@ -304,16 +304,28 @@ offset_right = 164.0
 offset_bottom = 180.0
 color = Color(0.050980393, 0.3764706, 0.07058824, 1)
 
+[node name="superjumpicon2" type="Sprite2D" parent="." groups=["doublejump2", "superjump2"]]
+visible = false
+position = Vector2(181.25, 161.25)
+scale = Vector2(0.8981396, 0.9450628)
+texture = ExtResource("11_6iyac")
+
+[node name="doublejumpicon2" type="Sprite2D" parent="." groups=["doublejump2"]]
+visible = false
+position = Vector2(181.25, 161.25)
+scale = Vector2(0.8981396, 0.9450628)
+texture = ExtResource("12_fdnlq")
+
 [node name="superjumpicon" type="Sprite2D" parent="." groups=["superjump"]]
 visible = false
-position = Vector2(20, 159)
-scale = Vector2(0.87499994, 0.87499994)
+position = Vector2(17.079998, 160.08)
+scale = Vector2(0.9149998, 0.9149998)
 texture = ExtResource("11_6iyac")
 
 [node name="doublejumpicon" type="Sprite2D" parent="." groups=["doublejump"]]
 visible = false
-position = Vector2(20, 159)
-scale = Vector2(0.87499994, 0.87499994)
+position = Vector2(17.079998, 160.08)
+scale = Vector2(0.9149998, 0.9149998)
 texture = ExtResource("12_fdnlq")
 
 [editable path="HBoxContainer/LeftViewportContainer/LeftSubViewport/Level1"]
