@@ -122,6 +122,12 @@ class_name Player1
 
 @onready var isStunned := false
 @onready var timer := 1.4
+
+@onready var jump1 = preload("res://Audio/jump1.mp3")
+@onready var jump2 = preload("res://Audio/jump2.mp3")
+@onready var jump3 = preload("res://Audio/jump3.mp3")
+
+
 #Variables determined by the developer set ones.
 var appliedGravity: float
 var appliedTerminalVelocity: float
@@ -427,11 +433,25 @@ func _coyoteTime():
 
 	
 func _jump():
+	print("jumping")
+	var jumpnoise = randi_range(0,2)
+	if jumpnoise == 0:
+		SoundEffects.stream = jump1
+		SoundEffects.play()
+	if jumpnoise == 1:
+		SoundEffects.stream = jump2
+		SoundEffects.play()
+	if jumpnoise == 2:
+		SoundEffects.stream = jump3
+		SoundEffects.play()
+
 	if jumpCount > 0:
 		velocity.y = -jumpMagnitude
 		jumpCount += -1
 		jumpWasPressed = false
-		
+
+
+
 func _wallJump():
 	var horizontalWallKick = abs(jumpMagnitude * cos(wallKickAngle * (PI / 180)))
 	var verticalWallKick = abs(jumpMagnitude * sin(wallKickAngle * (PI / 180)))
