@@ -18,6 +18,7 @@ boot_splash/bg_color=Color(0.54901963, 0.8352941, 0.88235295, 1)
 [autoload]
 
 Globals="*res://Scripts/globals.gd"
+SoundEffects="*res://sound_effects.gd"
 
 [display]
 
